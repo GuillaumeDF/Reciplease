@@ -1,5 +1,5 @@
 //
-//  IngredientsViewCell.swift
+//  RecetteViewCell.swift
 //  Reciplease
 //
 //  Created by Guillaume Djaider Fornari on 11/06/2019.
@@ -8,15 +8,8 @@
 
 import UIKit
 
-class IngredientsViewCell: UITableViewCell {
+class RecetteViewCell: UITableViewCell {
 
-    @IBOutlet weak var ingredientLabel: UILabel!
-    var displayIngredient: String = "" {
-        didSet {
-            self.setIngredientCell(ingredient: displayIngredient)
-        }
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,10 +19,6 @@ class IngredientsViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    private func setIngredientCell(ingredient: String) {
-        self.ingredientLabel.text = "- " + ingredient
     }
 
 }

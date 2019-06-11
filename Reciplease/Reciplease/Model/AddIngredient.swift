@@ -31,6 +31,7 @@ class AddIngredient {
     var arrayIngredients: [String] = []
     var urlIngredient: String = ""
     var parameters: Parameters = [:]
+    var dataRecette: Recettes?
     
     func addIngredient(ingredient: String) {
         if (self.arrayIngredients.contains(ingredient)) {
@@ -81,10 +82,9 @@ class AddIngredient {
     func getResponseJSON(data: Data) {
         do {
             // Use the struct CurrentWeather with the methode Decode
-            let dataRecette = try JSONDecoder().decode(Recettes.self, from: data)
-            print(dataRecette.hits.count)
+            self.dataRecette = try JSONDecoder().decode(Recettes.self, from: data)
             //self.getIconPNG()
-            //NotificationCenter.default.post(name:.dataWeather, object: self.dataWeather)
+            NotificationCenter.default.post(name:.dataRecette, object: nil)
         } catch {
             NotificationCenter.default.post(name: .error,object: ["Error Decoder", "Can't decode data in JSON"])
         }

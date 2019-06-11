@@ -8,15 +8,6 @@
 
 import UIKit
 import Alamofire
-// 5793f67a
-// cae818758e2fe39a683ffd2bd89ff81a
-// https://api.edamam.com/search?q=chicken&app_id=5793f67a&app_key=cae818758e2fe39a683ffd2bd89ff81a&q=meat
-
-/*let parameters: Parameters = [
-    "q": "Lemon",
-    "app_id": "5793f67a",
-    "app_key": "cae818758e2fe39a683ffd2bd89ff81a"
-]*/
 
 class AddIngredientsController: UIViewController {
 
@@ -26,10 +17,18 @@ class AddIngredientsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.white,
+             NSAttributedString.Key.font: UIFont(name: "Chalkduster", size: 20)!]
+        self.navigationController?.navigationBar.barTintColor =  .recipleaseColor
         NotificationCenter.default.addObserver(self, selector: #selector(displayError), name: .error, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(dataReceived), name: .dataRecette, object: nil)
     }
-
+    
+    @objc func dataReceived() {
+        performSegue(withIdentifier: "segueToListRecettes", sender: self)
+    }
+    
     @IBAction func addIngredient(_ sender: Any) {
         self.ingredients.addIngredient(ingredient: ingredientText.text ?? "nil")
         ingredientTableView.reloadData()
@@ -43,6 +42,16 @@ class AddIngredientsController: UIViewController {
     @IBAction func searchForRecipes(_ sender: Any) {
         ingredients.setParameters()
         ingredients.sendRequest()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToListRecettes" {
+            let successVC = segue.destination as! ListRecettesController
+            guard let tmpListRecette = ingredients.dataRecette else {
+                return
+            }
+            successVC.listRecette = tmpListRecette
+        }
     }
 }
 
@@ -67,5 +76,4 @@ extension AddIngredientsController: UITableViewDataSource {
             ingredientTableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
-
 }

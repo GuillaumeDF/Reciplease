@@ -11,6 +11,7 @@ import UIKit
 
 extension Notification.Name {
     static let error = Notification.Name("error")
+    static let dataRecette = Notification.Name("dataRecette")
 }
 
 extension UIViewController {
@@ -27,3 +28,6 @@ extension UIViewController {
         self.displayAlert(title: dataError[0], message: dataError[1])
     }
 }
+
+extension UIColor {
+    static let recipleaseColor: UIColor = UIColor(red: 54/255.0, green: 51/255.0, blue: 50/255.0, alpha: 1.0)}
