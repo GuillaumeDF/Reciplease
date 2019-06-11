@@ -1,0 +1,5 @@
+platform :ios, '12.2'
+target 'Reciplease' do
+    use_frameworks!
+    pod 'Alamofire'
+end

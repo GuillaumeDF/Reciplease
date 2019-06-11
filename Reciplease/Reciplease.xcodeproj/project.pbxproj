@@ -1,0 +1,602 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5579873CC134048818726992 /* Pods_Reciplease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 711CCEB69ADD02FD7460D3D1 /* Pods_Reciplease.framework */; };
+		F0A90F0222AC0ACF0089FAD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A90F0122AC0ACF0089FAD4 /* AppDelegate.swift */; };
+		F0A90F0722AC0ACF0089FAD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0A90F0522AC0ACF0089FAD4 /* Main.storyboard */; };
+		F0A90F0A22AC0ACF0089FAD4 /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0A90F0822AC0ACF0089FAD4 /* Reciplease.xcdatamodeld */; };
+		F0A90F0C22AC0AD10089FAD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0A90F0B22AC0AD10089FAD4 /* Assets.xcassets */; };
+		F0A90F0F22AC0AD10089FAD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0A90F0D22AC0AD10089FAD4 /* LaunchScreen.storyboard */; };
+		F0A90F1A22AC0AD10089FAD4 /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A90F1922AC0AD10089FAD4 /* RecipleaseTests.swift */; };
+		F0A90F2922AF0F8B0089FAD4 /* AddIngredientsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A90F2822AF0F8B0089FAD4 /* AddIngredientsController.swift */; };
+		F0A90F2B22AF10010089FAD4 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A90F2A22AF10010089FAD4 /* Api.swift */; };
+		F0A90F2D22AF1A9C0089FAD4 /* IngredientsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A90F2C22AF1A9C0089FAD4 /* IngredientsViewCell.swift */; };
+		F0A90F2F22AF1D500089FAD4 /* AddIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A90F2E22AF1D500089FAD4 /* AddIngredient.swift */; };
+		F0A90F3322AF224B0089FAD4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A90F3222AF224B0089FAD4 /* Extension.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F0A90F1622AC0AD10089FAD4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0A90EF622AC0ACF0089FAD4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F0A90EFD22AC0ACF0089FAD4;
+			remoteInfo = Reciplease;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6F97F6E7B1CFE29AFCD4BB5B /* Pods-Reciplease.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.release.xcconfig"; path = "Pods/Target Support Files/Pods-Reciplease/Pods-Reciplease.release.xcconfig"; sourceTree = "<group>"; };
+		711CCEB69ADD02FD7460D3D1 /* Pods_Reciplease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0A90EFE22AC0ACF0089FAD4 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0A90F0122AC0ACF0089FAD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F0A90F0622AC0ACF0089FAD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F0A90F0922AC0ACF0089FAD4 /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
+		F0A90F0B22AC0AD10089FAD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F0A90F0E22AC0AD10089FAD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F0A90F1022AC0AD10089FAD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0A90F1522AC0AD10089FAD4 /* RecipleaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0A90F1922AC0AD10089FAD4 /* RecipleaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseTests.swift; sourceTree = "<group>"; };
+		F0A90F1B22AC0AD20089FAD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0A90F2822AF0F8B0089FAD4 /* AddIngredientsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientsController.swift; sourceTree = "<group>"; };
+		F0A90F2A22AF10010089FAD4 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		F0A90F2C22AF1A9C0089FAD4 /* IngredientsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewCell.swift; sourceTree = "<group>"; };
+		F0A90F2E22AF1D500089FAD4 /* AddIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredient.swift; sourceTree = "<group>"; };
+		F0A90F3222AF224B0089FAD4 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		FCF5D3684652DE3609AAF343 /* Pods-Reciplease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reciplease/Pods-Reciplease.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F0A90EFB22AC0ACF0089FAD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5579873CC134048818726992 /* Pods_Reciplease.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0A90F1222AC0AD10089FAD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6D976FA2B5306971EEEC3D41 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FCF5D3684652DE3609AAF343 /* Pods-Reciplease.debug.xcconfig */,
+				6F97F6E7B1CFE29AFCD4BB5B /* Pods-Reciplease.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D218E9814A5C9E0A755F34D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				711CCEB69ADD02FD7460D3D1 /* Pods_Reciplease.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F0A90EF522AC0ACF0089FAD4 = {
+			isa = PBXGroup;
+			children = (
+				F0A90F0022AC0ACF0089FAD4 /* Reciplease */,
+				F0A90F1822AC0AD10089FAD4 /* RecipleaseTests */,
+				F0A90EFF22AC0ACF0089FAD4 /* Products */,
+				6D976FA2B5306971EEEC3D41 /* Pods */,
+				D218E9814A5C9E0A755F34D6 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F0A90EFF22AC0ACF0089FAD4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F0A90EFE22AC0ACF0089FAD4 /* Reciplease.app */,
+				F0A90F1522AC0AD10089FAD4 /* RecipleaseTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F0A90F0022AC0ACF0089FAD4 /* Reciplease */ = {
+			isa = PBXGroup;
+			children = (
+				F0A90F2422AF0EBB0089FAD4 /* Model */,
+				F0A90F2522AF0EC50089FAD4 /* View */,
+				F0A90F2622AF0ECA0089FAD4 /* Controller */,
+				F0A90F2722AF0EED0089FAD4 /* Supporting Files */,
+				F0A90F1022AC0AD10089FAD4 /* Info.plist */,
+			);
+			path = Reciplease;
+			sourceTree = "<group>";
+		};
+		F0A90F1822AC0AD10089FAD4 /* RecipleaseTests */ = {
+			isa = PBXGroup;
+			children = (
+				F0A90F1922AC0AD10089FAD4 /* RecipleaseTests.swift */,
+				F0A90F1B22AC0AD20089FAD4 /* Info.plist */,
+			);
+			path = RecipleaseTests;
+			sourceTree = "<group>";
+		};
+		F0A90F2422AF0EBB0089FAD4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F0A90F0822AC0ACF0089FAD4 /* Reciplease.xcdatamodeld */,
+				F0A90F2A22AF10010089FAD4 /* Api.swift */,
+				F0A90F2E22AF1D500089FAD4 /* AddIngredient.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F0A90F2522AF0EC50089FAD4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F0A90F2C22AF1A9C0089FAD4 /* IngredientsViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F0A90F2622AF0ECA0089FAD4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F0A90F0522AC0ACF0089FAD4 /* Main.storyboard */,
+				F0A90F2822AF0F8B0089FAD4 /* AddIngredientsController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F0A90F2722AF0EED0089FAD4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F0A90F0D22AC0AD10089FAD4 /* LaunchScreen.storyboard */,
+				F0A90F0B22AC0AD10089FAD4 /* Assets.xcassets */,
+				F0A90F0122AC0ACF0089FAD4 /* AppDelegate.swift */,
+				F0A90F3222AF224B0089FAD4 /* Extension.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F0A90EFD22AC0ACF0089FAD4 /* Reciplease */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0A90F1E22AC0AD20089FAD4 /* Build configuration list for PBXNativeTarget "Reciplease" */;
+			buildPhases = (
+				3572BFC57E00552D389EF18B /* [CP] Check Pods Manifest.lock */,
+				F0A90EFA22AC0ACF0089FAD4 /* Sources */,
+				F0A90EFB22AC0ACF0089FAD4 /* Frameworks */,
+				F0A90EFC22AC0ACF0089FAD4 /* Resources */,
+				187F453DA4FE4B00D26CF484 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Reciplease;
+			productName = Reciplease;
+			productReference = F0A90EFE22AC0ACF0089FAD4 /* Reciplease.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F0A90F1422AC0AD10089FAD4 /* RecipleaseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0A90F2122AC0AD20089FAD4 /* Build configuration list for PBXNativeTarget "RecipleaseTests" */;
+			buildPhases = (
+				F0A90F1122AC0AD10089FAD4 /* Sources */,
+				F0A90F1222AC0AD10089FAD4 /* Frameworks */,
+				F0A90F1322AC0AD10089FAD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F0A90F1722AC0AD10089FAD4 /* PBXTargetDependency */,
+			);
+			name = RecipleaseTests;
+			productName = RecipleaseTests;
+			productReference = F0A90F1522AC0AD10089FAD4 /* RecipleaseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F0A90EF622AC0ACF0089FAD4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Guillaume Djaider Fornari";
+				TargetAttributes = {
+					F0A90EFD22AC0ACF0089FAD4 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					F0A90F1422AC0AD10089FAD4 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = F0A90EFD22AC0ACF0089FAD4;
+					};
+				};
+			};
+			buildConfigurationList = F0A90EF922AC0ACF0089FAD4 /* Build configuration list for PBXProject "Reciplease" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F0A90EF522AC0ACF0089FAD4;
+			productRefGroup = F0A90EFF22AC0ACF0089FAD4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F0A90EFD22AC0ACF0089FAD4 /* Reciplease */,
+				F0A90F1422AC0AD10089FAD4 /* RecipleaseTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F0A90EFC22AC0ACF0089FAD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0A90F0F22AC0AD10089FAD4 /* LaunchScreen.storyboard in Resources */,
+				F0A90F0C22AC0AD10089FAD4 /* Assets.xcassets in Resources */,
+				F0A90F0722AC0ACF0089FAD4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0A90F1322AC0AD10089FAD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		187F453DA4FE4B00D26CF484 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Reciplease/Pods-Reciplease-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Reciplease/Pods-Reciplease-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3572BFC57E00552D389EF18B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Reciplease-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F0A90EFA22AC0ACF0089FAD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0A90F2D22AF1A9C0089FAD4 /* IngredientsViewCell.swift in Sources */,
+				F0A90F0A22AC0ACF0089FAD4 /* Reciplease.xcdatamodeld in Sources */,
+				F0A90F3322AF224B0089FAD4 /* Extension.swift in Sources */,
+				F0A90F2F22AF1D500089FAD4 /* AddIngredient.swift in Sources */,
+				F0A90F2922AF0F8B0089FAD4 /* AddIngredientsController.swift in Sources */,
+				F0A90F2B22AF10010089FAD4 /* Api.swift in Sources */,
+				F0A90F0222AC0ACF0089FAD4 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0A90F1122AC0AD10089FAD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0A90F1A22AC0AD10089FAD4 /* RecipleaseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F0A90F1722AC0AD10089FAD4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F0A90EFD22AC0ACF0089FAD4 /* Reciplease */;
+			targetProxy = F0A90F1622AC0AD10089FAD4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F0A90F0522AC0ACF0089FAD4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0A90F0622AC0ACF0089FAD4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F0A90F0D22AC0AD10089FAD4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0A90F0E22AC0AD10089FAD4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F0A90F1C22AC0AD20089FAD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F0A90F1D22AC0AD20089FAD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F0A90F1F22AC0AD20089FAD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCF5D3684652DE3609AAF343 /* Pods-Reciplease.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 69X4D33E8B;
+				INFOPLIST_FILE = Reciplease/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Guillaume.Reciplease;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F0A90F2022AC0AD20089FAD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F97F6E7B1CFE29AFCD4BB5B /* Pods-Reciplease.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 69X4D33E8B;
+				INFOPLIST_FILE = Reciplease/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Guillaume.Reciplease;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F0A90F2222AC0AD20089FAD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 69X4D33E8B;
+				INFOPLIST_FILE = RecipleaseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Guillaume.RecipleaseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reciplease.app/Reciplease";
+			};
+			name = Debug;
+		};
+		F0A90F2322AC0AD20089FAD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 69X4D33E8B;
+				INFOPLIST_FILE = RecipleaseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Guillaume.RecipleaseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reciplease.app/Reciplease";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F0A90EF922AC0ACF0089FAD4 /* Build configuration list for PBXProject "Reciplease" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0A90F1C22AC0AD20089FAD4 /* Debug */,
+				F0A90F1D22AC0AD20089FAD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0A90F1E22AC0AD20089FAD4 /* Build configuration list for PBXNativeTarget "Reciplease" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0A90F1F22AC0AD20089FAD4 /* Debug */,
+				F0A90F2022AC0AD20089FAD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0A90F2122AC0AD20089FAD4 /* Build configuration list for PBXNativeTarget "RecipleaseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0A90F2222AC0AD20089FAD4 /* Debug */,
+				F0A90F2322AC0AD20089FAD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F0A90F0822AC0ACF0089FAD4 /* Reciplease.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F0A90F0922AC0ACF0089FAD4 /* Reciplease.xcdatamodel */,
+			);
+			currentVersion = F0A90F0922AC0ACF0089FAD4 /* Reciplease.xcdatamodel */;
+			path = Reciplease.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = F0A90EF622AC0ACF0089FAD4 /* Project object */;
+}
