@@ -14,6 +14,7 @@ class RecetteViewCell: UITableViewCell {
     @IBOutlet weak var imageRecette: UIImageView!
     @IBOutlet weak var titleRecette: UILabel!
     @IBOutlet weak var ingredientsRecette: UILabel!
+    @IBOutlet weak var yieldRecette: UILabel!
     @IBOutlet weak var timeRecette: UILabel!
     @IBOutlet weak var viewIndications: UIView! {
         didSet {
@@ -40,5 +41,6 @@ class RecetteViewCell: UITableViewCell {
         self.titleRecette.text = recette.recipe.label
         self.ingredientsRecette.text = recette.recipe.ingredientLines.joined(separator: ", ")
         self.timeRecette.text = String(recette.recipe.totalTime) + "m"
+        self.yieldRecette.text = String(recette.recipe.yield)
     }
 }

@@ -12,12 +12,11 @@ class RecetteController: UIViewController {
 
     var imageRecette: UIImage!
     var dataRecette: Hits!
-    
-    @IBOutlet weak var imageView: imageRecette!
+    @IBOutlet var detailRecetteView: RecetteDetails!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.imageView.setImageRecette(image: imageRecette)
+        self.detailRecetteView.setDetailRecette(data: dataRecette, image: imageRecette)
         // Do any additional setup after loading the view.
     }
 }
