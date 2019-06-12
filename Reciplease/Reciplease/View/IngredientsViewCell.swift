@@ -11,9 +11,17 @@ import UIKit
 class IngredientsViewCell: UITableViewCell {
 
     @IBOutlet weak var ingredientLabel: UILabel!
+    @IBOutlet weak var displayIngredientLabel: UILabel!
+    
+    var newIngredient: String = "" {
+        didSet {
+            self.setIngredientCell(label: ingredientLabel, ingredient:  newIngredient)
+        }
+    }
+    
     var displayIngredient: String = "" {
         didSet {
-            self.setIngredientCell(ingredient: displayIngredient)
+            self.setIngredientCell(label: displayIngredientLabel, ingredient:  displayIngredient)
         }
     }
     
@@ -28,8 +36,7 @@ class IngredientsViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    private func setIngredientCell(ingredient: String) {
-        self.ingredientLabel.text = "- " + ingredient
+    private func setIngredientCell(label: UILabel, ingredient: String) {
+        label.text = "- " + ingredient
     }
-
 }

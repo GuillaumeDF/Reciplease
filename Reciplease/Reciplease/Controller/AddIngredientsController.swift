@@ -66,7 +66,7 @@ extension AddIngredientsController: UITableViewDataSource {
         let cell: IngredientsViewCell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell") as! IngredientsViewCell
         let data = ingredients.arrayIngredients[indexPath.row]
         
-       cell.displayIngredient = data
+       cell.newIngredient = data
         return cell
     }
     

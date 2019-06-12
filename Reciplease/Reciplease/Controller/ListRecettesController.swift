@@ -11,15 +11,27 @@ import UIKit
 class ListRecettesController: UIViewController {
 
     var listRecette: Recettes!
+    var recettePicked: Hits!
+    var imagePicked: UIImage!
+    
     @IBOutlet weak var recettesTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToRecette" {
+            let successVC = segue.destination as! RecetteController
+            successVC.dataRecette = self.recettePicked
+            successVC.imageRecette = self.imagePicked
+        }
+    }
 
 }
 
 extension ListRecettesController: UITableViewDataSource, UITableViewDelegate {
+    
     // Return the number of column in TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listRecette.recettes.hits.count
@@ -36,5 +48,11 @@ extension ListRecettesController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.recettePicked = listRecette.recettes.hits[indexPath.row]
+        self.imagePicked = listRecette.images[indexPath.row]
+        performSegue(withIdentifier: "segueToRecette", sender: self)
     }
 }
