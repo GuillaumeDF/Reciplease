@@ -7,9 +7,23 @@
 //
 
 import UIKit
+import Alamofire
 
 class RecetteViewCell: UITableViewCell {
 
+    @IBOutlet weak var imageRecette: UIImageView!
+    @IBOutlet weak var titleRecette: UILabel!
+    @IBOutlet weak var ingredientsRecette: UILabel!
+    @IBOutlet weak var timeRecette: UILabel!
+    @IBOutlet weak var viewIndications: UIView! {
+        didSet {
+            viewIndications.layer.cornerRadius = 5
+            viewIndications.layer.borderWidth = 2.5
+            viewIndications.layer.borderColor = UIColor.white.cgColor
+            viewIndications.layer.masksToBounds = true
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +34,11 @@ class RecetteViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func setRecetteCell(recette: Hits, image: UIImage) {
+        self.imageRecette.image = image
+        self.titleRecette.text = recette.recipe.label
+        self.ingredientsRecette.text = recette.recipe.ingredientLines.joined(separator: ", ")
+        self.timeRecette.text = String(recette.recipe.totalTime) + "m"
+    }
 }

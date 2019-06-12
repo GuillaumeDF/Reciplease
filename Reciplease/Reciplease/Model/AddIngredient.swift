@@ -22,9 +22,14 @@ struct Hits: Codable {
     let recipe: Recipe
 }
 
-struct Recettes: Codable {
+struct CurrentRecettes: Codable {
     //let count: Int
     let hits: [Hits]
+}
+
+struct Recettes {
+    var recettes: CurrentRecettes
+    var images: [UIImage]
 }
 
 class AddIngredient {
@@ -82,12 +87,25 @@ class AddIngredient {
     func getResponseJSON(data: Data) {
         do {
             // Use the struct CurrentWeather with the methode Decode
-            self.dataRecette = try JSONDecoder().decode(Recettes.self, from: data)
-            //self.getIconPNG()
+            let dataJSON = try JSONDecoder().decode(CurrentRecettes.self, from: data)
+            self.dataRecette = Recettes(recettes: dataJSON, images: self.getImages(recettes: dataJSON))
             NotificationCenter.default.post(name:.dataRecette, object: nil)
         } catch {
             NotificationCenter.default.post(name: .error,object: ["Error Decoder", "Can't decode data in JSON"])
         }
     }
     
+    private func getImages(recettes: CurrentRecettes) -> [UIImage] {
+        var images: [UIImage] = []
+        
+        for urlImage in recettes.hits {
+            if let imageRecette = try? Data(contentsOf: URL(string: urlImage.recipe.image)!) {
+                images.append(UIImage(data: imageRecette as Data)!)
+            }
+            else {
+                images.append(UIImage(named: "food.png")!)
+            }
+        }
+       return (images)
+    }
 }

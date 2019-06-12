@@ -30,4 +30,6 @@ extension UIViewController {
 }
 
 extension UIColor {
-    static let recipleaseColor: UIColor = UIColor(red: 54/255.0, green: 51/255.0, blue: 50/255.0, alpha: 1.0)}
+    static let recipleaseColor: UIColor = UIColor(red: 54/255.0, green: 51/255.0, blue: 50/255.0, alpha: 1.0)
+}
+
