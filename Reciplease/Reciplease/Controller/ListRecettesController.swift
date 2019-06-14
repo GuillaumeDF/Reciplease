@@ -17,7 +17,20 @@ class ListRecettesController: UIViewController {
     @IBOutlet weak var recettesTableView: UITableView!
     
     override func viewDidLoad() {
+        if (listRecette == nil) {
+            print("ok")
+        }
         super.viewDidLoad()
+    }
+    
+    @IBAction func resetFavorie(_ sender: Any) {
+        let favorie = Favorie(context: AppDelegate.viewContext)
+        
+        favorie.resetFavorie()
+        /*print(" Favorie : \(Favorie.favorie.count)")
+        print(" Liste Recette : \(Favorie.listRecettes.count)")
+        //print(Favorie.listRecettes[0].label)
+        print(" Liste Image : \(Favorie.listImages.count)")*/
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

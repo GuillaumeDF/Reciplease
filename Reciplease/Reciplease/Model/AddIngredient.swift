@@ -14,9 +14,8 @@ struct Recipe: Codable {
     let image: String
     let ingredientLines: [String]
     let calories: Double
-    //let totalWeight: Double
-    let totalTime: Int
-    let yield: Int
+    let totalTime: Int16
+    let yield: Int16
 }
 
 struct Hits: Codable {
@@ -24,7 +23,7 @@ struct Hits: Codable {
 }
 
 struct CurrentRecettes: Codable {
-    let hits: [Hits]
+    var hits: [Hits]
 }
 
 struct Recettes {

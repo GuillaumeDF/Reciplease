@@ -19,6 +19,11 @@ class RecetteController: UIViewController {
         self.detailRecetteView.setDetailRecette(data: dataRecette, image: imageRecette)
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func saveRecette(_ sender: Any) {
+        let favorie = Favorie(context: AppDelegate.viewContext)
+        favorie.addElement(dataRecette: dataRecette, imageRecette: imageRecette)
+    }
 }
 
 extension RecetteController: UITableViewDataSource, UITableViewDelegate {
