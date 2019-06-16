@@ -13,7 +13,10 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var favorie: Recettes! {
+        return Favorie.restorAllFavories()
+    }
+    static let delegate = UIApplication.shared.delegate as! AppDelegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         return true
@@ -34,15 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        /*if (Favorie.favorie.isEmpty) {
-            return
-        }*/
-        for favorie in Favorie.favorie {
-            let recette = favorie.recettesFavories
-            //let image = favorie.imagesFavories
-            print("Nom recette : \(String(describing: recette?.label))")
-            //print("Image : \(String(describing: image?.image))")
-        }
+        //self.favorie = Favorie.restorAllFavories()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

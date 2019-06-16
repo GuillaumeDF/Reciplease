@@ -10,27 +10,44 @@ import UIKit
 
 class ListRecettesController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
     var listRecette: Recettes!
     var recettePicked: Hits!
     var imagePicked: UIImage!
+    var typeNavigation: String? {
+        return navigationController?.title
+    }
     
     @IBOutlet weak var recettesTableView: UITableView!
     
-    override func viewDidLoad() {
-        if (listRecette == nil) {
-            print("ok")
+    /*override func viewDidAppear(_ animated: Bool) {
+        if (typeNavigation == "Favorie") {
+            self.listRecette = AppDelegate.delegate.favorie
+            tableView.reloadData()
         }
+    }*/
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadFavoriesListRecettes), name: .reloadFavoriesListRecettes, object: nil)
+        guard (typeNavigation != nil) else {
+            return NotificationCenter.default.post(name: .error, object: ["Error Url", "Can't construct URL"])
+        }
+        if (typeNavigation == "Favorie") {
+            self.listRecette = AppDelegate.delegate.favorie
+        }
+    }
+    
+    @objc func reloadFavoriesListRecettes() {
+        if (typeNavigation == "Favorie") {
+            self.listRecette = AppDelegate.delegate.favorie
+            tableView.reloadData()
+        }
     }
     
     @IBAction func resetFavorie(_ sender: Any) {
         let favorie = Favorie(context: AppDelegate.viewContext)
-        
         favorie.resetFavorie()
-        /*print(" Favorie : \(Favorie.favorie.count)")
-        print(" Liste Recette : \(Favorie.listRecettes.count)")
-        //print(Favorie.listRecettes[0].label)
-        print(" Liste Image : \(Favorie.listImages.count)")*/
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

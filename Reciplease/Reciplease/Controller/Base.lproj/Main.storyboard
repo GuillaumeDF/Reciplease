@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Favorie-->
         <scene sceneID="sCC-pw-klJ">
             <objects>
-                <navigationController id="iGn-7T-m56" sceneMemberID="viewController">
+                <navigationController title="Favorie" id="iGn-7T-m56" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="ne9-da-7QU"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8wH-fy-r91">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="-794" y="-356"/>
         </scene>
-        <!--Item-->
+        <!--FindRecette-->
         <scene sceneID="pAw-1p-3ih">
             <objects>
-                <navigationController id="Q6l-Jx-BUZ" sceneMemberID="viewController">
+                <navigationController title="FindRecette" id="Q6l-Jx-BUZ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="WDQ-pw-YYP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JHE-bL-c35">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -254,7 +254,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="edM-o3-hrz"/>
                     <navigationItem key="navigationItem" title="Reciplease" id="3eU-EV-YDO">
-                        <barButtonItem key="rightBarButtonItem" title="Reset" style="plain" id="W4m-bt-vlf">
+                        <barButtonItem key="rightBarButtonItem" title="Reset" id="W4m-bt-vlf">
                             <connections>
                                 <action selector="resetFavorie:" destination="HTH-Wt-fWU" id="3Rk-fx-SgQ"/>
                             </connections>
@@ -262,6 +262,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="recettesTableView" destination="v66-jM-6Ab" id="wCW-Ig-IUK"/>
+                        <outlet property="tableView" destination="v66-jM-6Ab" id="tJN-Tf-S4u"/>
                         <segue destination="umW-Te-kfE" kind="show" identifier="segueToRecette" id="nPk-tc-zc1"/>
                     </connections>
                 </viewController>
@@ -415,6 +416,6 @@
         <image name="user" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="POl-0V-dvB"/>
+        <segue reference="fUv-1j-eC8"/>
     </inferredMetricsTieBreakers>
 </document>

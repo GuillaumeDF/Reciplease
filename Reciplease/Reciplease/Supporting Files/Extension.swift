@@ -12,6 +12,7 @@ import UIKit
 extension Notification.Name {
     static let error = Notification.Name("error")
     static let dataRecette = Notification.Name("dataRecette")
+    static let reloadFavoriesListRecettes = Notification.Name("reloadFavoriesListRecettes")
 }
 
 extension UIViewController {

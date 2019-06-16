@@ -143,8 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				F0A90F0822AC0ACF0089FAD4 /* Reciplease.xcdatamodeld */,
-				F0A90F2E22AF1D500089FAD4 /* AddIngredient.swift */,
 				F0A90F2A22AF10010089FAD4 /* Api.swift */,
+				F0A90F2E22AF1D500089FAD4 /* AddIngredient.swift */,
 				F082A37F22B300F90034BEE4 /* Favorie.swift */,
 			);
 			path = Model;
