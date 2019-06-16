@@ -12,7 +12,7 @@ class RecetteController: UIViewController {
 
     var imageRecette: UIImage!
     var dataRecette: Hits!
-    @IBOutlet var detailRecetteView: RecetteDetails!
+    @IBOutlet var detailRecetteView: RecetteDetailsView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

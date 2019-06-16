@@ -20,16 +20,12 @@ class ListRecettesController: UIViewController {
     
     @IBOutlet weak var recettesTableView: UITableView!
     
-    /*override func viewDidAppear(_ animated: Bool) {
-        if (typeNavigation == "Favorie") {
-            self.listRecette = AppDelegate.delegate.favorie
-            tableView.reloadData()
-        }
-    }*/
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setNavigationBar()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(reloadFavoriesListRecettes), name: .reloadFavoriesListRecettes, object: nil)
+        
         guard (typeNavigation != nil) else {
             return NotificationCenter.default.post(name: .error, object: ["Error Url", "Can't construct URL"])
         }

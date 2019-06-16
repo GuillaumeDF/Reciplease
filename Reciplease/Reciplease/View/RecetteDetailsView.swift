@@ -1,5 +1,5 @@
 //
-//  RecetteDetails.swift
+//  RecetteDetailsView.swift
 //  Reciplease
 //
 //  Created by Guillaume Djaider Fornari on 13/06/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecetteDetails: UIView {
+class RecetteDetailsView: UIView {
     
     @IBOutlet weak var caloriesRecette: UILabel!
     @IBOutlet weak var titleRecette: UILabel!

@@ -28,9 +28,15 @@ extension UIViewController {
         }
         self.displayAlert(title: dataError[0], message: dataError[1])
     }
+    
+    func setNavigationBar() {
+        self.navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.white,
+             NSAttributedString.Key.font: UIFont(name: "Chalkduster", size: 20)!]
+        self.navigationController?.navigationBar.barTintColor =  .recipleaseColor
+    }
 }
 
 extension UIColor {
     static let recipleaseColor: UIColor = UIColor(red: 54/255.0, green: 51/255.0, blue: 50/255.0, alpha: 1.0)
 }
-

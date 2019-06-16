@@ -9,6 +9,10 @@
 import Foundation
 import Alamofire
 
+internal let urlApi:    String! = "https://api.edamam.com/search"
+internal let idApi:     String! = "5793f67a"
+internal let keyApi:    String! = "cae818758e2fe39a683ffd2bd89ff81a"
+
 struct Recipe: Codable {
     let label: String
     let image: String
@@ -34,7 +38,11 @@ struct Recettes {
 class AddIngredient {
     var arrayIngredients: [String] = []
     var urlIngredient: String = ""
-    var parameters: Parameters = [:]
+    var parameters: Parameters {
+        return ["q": self.urlIngredient,
+                "app_id": idApi!,
+                "app_key": keyApi!]
+        }
     var dataRecette: Recettes?
     
     func addIngredient(ingredient: String) {
@@ -63,14 +71,6 @@ class AddIngredient {
         self.arrayIngredients.remove(at: index)
     }
     
-    func setParameters() {
-        self.parameters  = [
-            "q": self.urlIngredient,
-            "app_id": "5793f67a",
-            "app_key": "cae818758e2fe39a683ffd2bd89ff81a"
-        ]
-    }
-    
     func sendRequest() {
         Alamofire.request(urlApi, parameters: self.parameters).responseJSON { response in
             if response.error != nil {
@@ -85,7 +85,6 @@ class AddIngredient {
     
     func getResponseJSON(data: Data) {
         do {
-            // Use the struct CurrentWeather with the methode Decode
             let dataJSON = try JSONDecoder().decode(CurrentRecettes.self, from: data)
             self.dataRecette = Recettes(recettes: dataJSON, images: self.getImages(recettes: dataJSON))
             NotificationCenter.default.post(name:.dataRecette, object: nil)

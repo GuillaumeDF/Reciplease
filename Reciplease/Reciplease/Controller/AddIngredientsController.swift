@@ -17,10 +17,8 @@ class AddIngredientsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.titleTextAttributes =
-            [NSAttributedString.Key.foregroundColor: UIColor.white,
-             NSAttributedString.Key.font: UIFont(name: "Chalkduster", size: 20)!]
-        self.navigationController?.navigationBar.barTintColor =  .recipleaseColor
+        self.setNavigationBar()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(displayError), name: .error, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(dataReceived), name: .dataRecette, object: nil)
     }
@@ -40,7 +38,6 @@ class AddIngredientsController: UIViewController {
     }
     
     @IBAction func searchForRecipes(_ sender: Any) {
-        ingredients.setParameters()
         ingredients.sendRequest()
     }
     
@@ -55,7 +52,7 @@ class AddIngredientsController: UIViewController {
     }
 }
 
-extension AddIngredientsController: UITableViewDataSource {
+extension AddIngredientsController: UITableViewDataSource, UITableViewDelegate {
     
     // Return the number of column in TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,5 +72,9 @@ extension AddIngredientsController: UITableViewDataSource {
             ingredients.removeIngredient(index: indexPath.row)
             ingredientTableView.deleteRows(at: [indexPath], with: .automatic)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40
     }
 }

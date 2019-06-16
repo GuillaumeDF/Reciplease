@@ -18,12 +18,6 @@ public class Favorie: NSManagedObject {
         return favories
     }
     
-    /*static var test: [RecettesFavories] {
-        let request: NSFetchRequest<RecettesFavories> = RecettesFavories.fetchRequest()
-        guard let favories = try? AppDelegate.viewContext.fetch(request) else { return [] }
-        return favories
-    }*/
-    
     static func restorAllFavories() -> Recettes {
         var imagesFavories: [UIImage] = []
         var hits: [Hits] = []
