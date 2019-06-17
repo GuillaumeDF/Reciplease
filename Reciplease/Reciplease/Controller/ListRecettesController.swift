@@ -10,40 +10,33 @@ import UIKit
 
 class ListRecettesController: UIViewController {
 
+    @IBOutlet weak var resetButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     var listRecette: Recettes!
     var recettePicked: Hits!
     var imagePicked: UIImage!
-    var typeNavigation: String? {
-        return navigationController?.title
-    }
     
     @IBOutlet weak var recettesTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavigationBar()
-        
+        self.setResetButton()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadFavoriesListRecettes), name: .reloadFavoriesListRecettes, object: nil)
-        
-        guard (typeNavigation != nil) else {
-            return NotificationCenter.default.post(name: .error, object: ["Error Url", "Can't construct URL"])
-        }
-        if (typeNavigation == "Favorie") {
+        if isFavorie {
             self.listRecette = AppDelegate.delegate.favorie
         }
     }
     
     @objc func reloadFavoriesListRecettes() {
-        if (typeNavigation == "Favorie") {
+        if isFavorie {
             self.listRecette = AppDelegate.delegate.favorie
             tableView.reloadData()
         }
     }
     
     @IBAction func resetFavorie(_ sender: Any) {
-        let favorie = Favorie(context: AppDelegate.viewContext)
-        favorie.resetFavorie()
+        Favorie.resetFavorie()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,7 +46,6 @@ class ListRecettesController: UIViewController {
             successVC.imageRecette = self.imagePicked
         }
     }
-
 }
 
 extension ListRecettesController: UITableViewDataSource, UITableViewDelegate {
@@ -68,7 +60,6 @@ extension ListRecettesController: UITableViewDataSource, UITableViewDelegate {
         let data = listRecette.recettes.hits[indexPath.row]
         let image = listRecette.images[indexPath.row]
         cell.setRecetteCell(recette: data, image: image)
-        cell.layer.cornerRadius = 5
         return cell
     }
     
@@ -80,5 +71,26 @@ extension ListRecettesController: UITableViewDataSource, UITableViewDelegate {
         self.recettePicked = listRecette.recettes.hits[indexPath.row]
         self.imagePicked = listRecette.images[indexPath.row]
         performSegue(withIdentifier: "segueToRecette", sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard isFavorie else {
+            return
+        }
+        if editingStyle == .delete {
+            Favorie.deleteElement(row: indexPath.row)
+        }
+    }
+}
+
+extension ListRecettesController {
+    
+    func setResetButton() {
+        if isFavorie {
+            self.resetButton.isEnabled = true
+        }
+        else {
+            self.resetButton.isEnabled = false
+        }
     }
 }

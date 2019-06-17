@@ -10,12 +10,18 @@ import Foundation
 import UIKit
 
 extension Notification.Name {
+    
     static let error = Notification.Name("error")
     static let dataRecette = Notification.Name("dataRecette")
     static let reloadFavoriesListRecettes = Notification.Name("reloadFavoriesListRecettes")
 }
 
 extension UIViewController {
+    
+    var isFavorie: Bool {
+        return (navigationController?.title == "Favorie")
+    }
+    
     func displayAlert(title: String, message: String) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -38,5 +44,6 @@ extension UIViewController {
 }
 
 extension UIColor {
+    
     static let recipleaseColor: UIColor = UIColor(red: 54/255.0, green: 51/255.0, blue: 50/255.0, alpha: 1.0)
 }

@@ -45,7 +45,7 @@ public class Favorie: NSManagedObject {
     func addElement(dataRecette: Hits, imageRecette: UIImage) {
         self.addDataRecette(dataRecette: dataRecette)
         self.addImageRecette(imageRecette: imageRecette)
-        self.save()
+        Favorie.save()
     }
     
     private func addDataRecette(dataRecette: Hits) {
@@ -66,14 +66,20 @@ public class Favorie: NSManagedObject {
         self.imagesFavories = image
     }
     
-    func resetFavorie() {
+    static func resetFavorie() {
         for favorie in Favorie.favorie {
-           managedObjectContext?.delete(favorie)
+           AppDelegate.viewContext.delete(favorie)
         }
-       self.save()
+       Favorie.save()
     }
     
-    private func save() {
+    static func deleteElement(row: Int) {
+        let element = Favorie.favorie[row]
+        AppDelegate.viewContext.delete(element)
+        Favorie.save()
+    }
+    
+    static private func save() {
         do {
             try  AppDelegate.viewContext.save()
             NotificationCenter.default.post(name: .reloadFavoriesListRecettes, object: nil)

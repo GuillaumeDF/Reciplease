@@ -42,5 +42,6 @@ class RecetteViewCell: UITableViewCell {
         self.ingredientsRecette.text = recette.recipe.ingredientLines.joined(separator: ", ")
         self.timeRecette.text = String(recette.recipe.totalTime) + "m"
         self.yieldRecette.text = String(recette.recipe.yield)
+        self.layer.cornerRadius = 10
     }
 }

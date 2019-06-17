@@ -13,9 +13,11 @@ class RecetteController: UIViewController {
     var imageRecette: UIImage!
     var dataRecette: Hits!
     @IBOutlet var detailRecetteView: RecetteDetailsView!
+    @IBOutlet weak var addButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setAddButton()
         self.detailRecetteView.setDetailRecette(data: dataRecette, image: imageRecette)
         // Do any additional setup after loading the view.
     }
@@ -42,5 +44,17 @@ extension RecetteController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+}
+
+extension RecetteController {
+    
+    func setAddButton() {
+        if isFavorie {
+            self.addButton.isEnabled = false
+        }
+        else {
+            self.addButton.isEnabled = true
+        }
     }
 }
