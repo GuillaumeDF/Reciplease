@@ -17,7 +17,7 @@ class RecetteViewCell: UITableViewCell {
     @IBOutlet weak var yieldRecette: UILabel!
     @IBOutlet weak var timeRecette: UILabel!
     @IBOutlet weak var viewIndications: UIView! {
-        didSet {
+        didSet { // Add corner and border White
             viewIndications.layer.cornerRadius = 5
             viewIndications.layer.borderWidth = 2.5
             viewIndications.layer.borderColor = UIColor.white.cgColor
@@ -27,13 +27,10 @@ class RecetteViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func setRecetteCell(recette: Hits, image: UIImage) {

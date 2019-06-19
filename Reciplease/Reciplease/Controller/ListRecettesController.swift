@@ -13,6 +13,7 @@ class ListRecettesController: UIViewController {
     @IBOutlet weak var resetButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     var listRecette: Recettes!
+    // Variable send  to RecetteController for show in detail the recette
     var recettePicked: Hits!
     var imagePicked: UIImage!
     
@@ -20,26 +21,26 @@ class ListRecettesController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setNavigationBar()
-        self.setResetButton()
+        self.setNavigationBar() // Set color and fond text
+        self.setResetButton() // Set reset Button hidden / not hidden
         NotificationCenter.default.addObserver(self, selector: #selector(reloadFavoriesListRecettes), name: .reloadFavoriesListRecettes, object: nil)
         if isFavorie {
-            self.listRecette = AppDelegate.delegate.favorie
+            self.listRecette = AppDelegate.delegate.favorie  // If controller is Favorie then recette = ReccetteFavorie
         }
     }
     
-    @objc func reloadFavoriesListRecettes() {
-        if isFavorie {
+    @objc func reloadFavoriesListRecettes() { // Reload listFavorieRecette
+        if isFavorie { // If controller is Favorie then recette = ReccetteFavorie
             self.listRecette = AppDelegate.delegate.favorie
             tableView.reloadData()
         }
     }
     
-    @IBAction func resetFavorie(_ sender: Any) {
+    @IBAction func resetFavorie(_ sender: Any) { // Reset all favorie
         Favorie.resetFavorie()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // Prepare variables for the changement of controller
         if segue.identifier == "segueToRecette" {
             let successVC = segue.destination as! RecetteController
             successVC.dataRecette = self.recettePicked
@@ -50,11 +51,12 @@ class ListRecettesController: UIViewController {
 
 extension ListRecettesController: UITableViewDataSource, UITableViewDelegate {
     
-    // Return the number of column in TableView
+    // Return the number of cell in TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listRecette.recettes.hits.count
     }
     
+    // Return cell with data
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RecetteViewCell = tableView.dequeueReusableCell(withIdentifier: "RecetteCell") as! RecetteViewCell
         let data = listRecette.recettes.hits[indexPath.row]
@@ -63,16 +65,19 @@ extension ListRecettesController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    // Return height of each cell
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
     
+    // Get index of cell selected
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.recettePicked = listRecette.recettes.hits[indexPath.row]
         self.imagePicked = listRecette.images[indexPath.row]
         performSegue(withIdentifier: "segueToRecette", sender: self)
     }
     
+    // Delete cell
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard isFavorie else {
             return
@@ -85,7 +90,7 @@ extension ListRecettesController: UITableViewDataSource, UITableViewDelegate {
 
 extension ListRecettesController {
     
-    func setResetButton() {
+    func setResetButton() { // Set the button reset
         if isFavorie {
             self.resetButton.isEnabled = true
         }

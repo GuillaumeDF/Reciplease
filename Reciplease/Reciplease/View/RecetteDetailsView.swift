@@ -16,7 +16,7 @@ class RecetteDetailsView: UIView {
     @IBOutlet weak var yieldRecette: UILabel!
     @IBOutlet weak var timeRecette: UILabel!
     @IBOutlet weak var viewIndication: UIView! {
-        didSet {
+        didSet { // Add corner and border White
             viewIndication.layer.cornerRadius = 5
             viewIndication.layer.borderWidth = 2.5
             viewIndication.layer.borderColor = UIColor.white.cgColor
