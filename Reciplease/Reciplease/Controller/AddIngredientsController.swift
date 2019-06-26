@@ -45,10 +45,13 @@ class AddIngredientsController: UIViewController {
         if segue.identifier == "segueToListRecettes" {
             let successVC = segue.destination as! ListRecettesController
             guard let tmpListRecette = ingredients.dataRecette else {
-                return
+                return successVC.listRecette = Recettes(recettes: CurrentRecettes(hits: []), images: [])
             }
             successVC.listRecette = tmpListRecette
         }
+    }
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        ingredientText.resignFirstResponder()
     }
 }
 

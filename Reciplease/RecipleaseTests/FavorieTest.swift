@@ -10,26 +10,26 @@ import XCTest
 @testable import Reciplease
 import UIKit
 
-var hitsOK: Hits {
-    return Hits(recipe: Recipe(label: "Tarte à la tomate", image: "food.png", ingredientLines: ["Lemon,", "Cheese", "Pasta"], calories: 1234.0, totalTime: 12, yield: 3))
-}
-
-var hitsKO: Hits {
-    return Hits(recipe: Recipe(label: "", image: "", ingredientLines: [], calories: 0, totalTime: 0, yield: 0))
-}
-
 class FavorieTest: XCTestCase {
+    
+    static var hitsOK: Hits {
+        return Hits(recipe: Recipe(label: "Tarte à la tomate", image: "food.png", ingredientLines: ["Lemon,", "Cheese", "Pasta"], calories: 1234.0, totalTime: 12, yield: 3))
+    }
+    
+    static var hitsKO: Hits {
+        return Hits(recipe: Recipe(label: "", image: "", ingredientLines: [], calories: 0, totalTime: 0, yield: 0))
+    }
     
     func testGetAddRecetteToFavorieWhenDataIsCorrectThenAddingShouldBeOK() {
         let favorie = Favorie(context: AppDelegate.viewContext)
-        favorie.addElement(dataRecette: hitsOK, imageRecette: UIImage(named: "food.png")!)
+        favorie.addElement(dataRecette: FavorieTest.hitsOK, imageRecette: UIImage(named: "food.png")?.pngData())
         XCTAssertEqual(favorie.recettesFavories?.label, "Tarte à la tomate")
         XCTAssertEqual(favorie.imagesFavories?.image, UIImage(named: "food.png")?.pngData())
     }
     
     func testGetAddRecetteToFavorieWhenDataIsNotCorrectThenAddingShouldBeOK() {
         let favorie = Favorie(context: AppDelegate.viewContext)
-        favorie.addElement(dataRecette: hitsKO, imageRecette: UIImage(named: "food.png")!)
+        favorie.addElement(dataRecette: FavorieTest.hitsKO, imageRecette: "".data(using: .utf8))
         XCTAssertEqual(favorie.recettesFavories?.label, "")
         XCTAssertEqual(favorie.imagesFavories?.image, UIImage(named: "food.png")?.pngData())
     }
@@ -52,6 +52,7 @@ class FavorieTest: XCTestCase {
         self.testResetAllFavoriesThenTheCountingShouldBeZero()
         self.testGetAddRecetteToFavorieWhenDataIsNotCorrectThenAddingShouldBeOK()
         self.testGetAddRecetteToFavorieWhenDataIsNotCorrectThenAddingShouldBeOK()
+        Favorie.favorie.first!.imagesFavories?.image = "".data(using: .utf8)
         let recettes = Favorie.restorAllFavories()
         XCTAssertEqual(recettes.recettes.hits.count, 2)
         XCTAssertEqual(recettes.images.count, 2)
@@ -73,5 +74,10 @@ class FavorieTest: XCTestCase {
         Favorie.deleteElement(row: 1)
         XCTAssertEqual(Favorie.favorie.count, 1)
         XCTAssertEqual(Favorie.favorie.count, 1)
+    }
+    
+    func testFindFavorieWhenFavorieIsEmptyThenResultShouldBeKO() {
+        self.testResetAllFavoriesThenTheCountingShouldBeZero()
+        XCTAssertEqual(Favorie.favorie, [])
     }
 }

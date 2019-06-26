@@ -23,7 +23,7 @@ class RecetteController: UIViewController {
     
     @IBAction func saveRecette(_ sender: Any) { // Save recette
         let favorie = Favorie(context: AppDelegate.viewContext) // Creata a new context of Favorie
-        favorie.addElement(dataRecette: dataRecette, imageRecette: imageRecette) // Add a new element to Favore
+        favorie.addElement(dataRecette: dataRecette, imageRecette: imageRecette.pngData()) // Add a new element to Favore
     }
 }
 

@@ -67,6 +67,9 @@ class AddIngredient {
     }
     
     func removeIngredient(index: Int) { // Remove one ingredient in the list
+        if index > self.arrayIngredients.count {
+            return NotificationCenter.default.post(name: .error, object: ["Bad Index", "Can't remove an element"])
+        }
         self.urlIngredient = self.urlIngredient.replacingOccurrences(of: "\(self.arrayIngredients[index]) ", with: "")
         self.arrayIngredients.remove(at: index)
     }
@@ -79,14 +82,14 @@ class AddIngredient {
             if response.response?.statusCode != 200 { // Check if the response is 200
                 return NotificationCenter.default.post(name: .error, object: ["Error Response", "Error Access from Api"])
             }
-            self.getResponseJSON(data: response.data!) // Call a function to decode in JSON
+            self.getResponseJSON(data: response.data) // Call a function to decode in JSON
         }
     }
     
-    func getResponseJSON(data: Data) {
+    func getResponseJSON(data: Data?) {
         do {
             // Decode with the struct CurrentRecettes
-            let dataJSON = try JSONDecoder().decode(CurrentRecettes.self, from: data)
+            let dataJSON = try JSONDecoder().decode(CurrentRecettes.self, from: data ?? "".data(using: .utf8)!)
             self.dataRecette = Recettes(recettes: dataJSON, images: self.getImages(recettes: dataJSON))
             NotificationCenter.default.post(name:.dataRecette, object: nil) // Send a notification for inform than the data is ready to display
         } catch {
@@ -98,13 +101,13 @@ class AddIngredient {
         var images: [UIImage] = []
         
         for urlImage in recettes.hits {
-            if let imageRecette = try? Data(contentsOf: URL(string: urlImage.recipe.image)!) {
-                images.append(UIImage(data: imageRecette as Data)!)
+            if URL(string: urlImage.recipe.image) != nil {
+                images.append(UIImage(data: try! Data(contentsOf: URL(string: urlImage.recipe.image)!))!)
             }
             else {
                 images.append(UIImage(named: "food.png")!) // Download a default image if the recover failed
             }
         }
-       return (images)
+        return (images)
     }
 }

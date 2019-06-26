@@ -40,7 +40,7 @@ public class Favorie: NSManagedObject {
         return Hits(recipe: Recipe(label: recette.label!, image: "", ingredientLines: recette.listIngredients as! [String], calories: recette.calories, totalTime: recette.totalTime, yield: recette.yield))
     }
     
-    func addElement(dataRecette: Hits, imageRecette: UIImage) {
+    func addElement(dataRecette: Hits, imageRecette: Data?) {
         self.addDataRecette(dataRecette: dataRecette) // Call a Function for add the recette
         self.addImageRecette(imageRecette: imageRecette) // Call a function for add the image
         Favorie.save() // Save the new favorie recette
@@ -57,14 +57,14 @@ public class Favorie: NSManagedObject {
         self.recettesFavories = data // Add RecetteFavorie to Favorie.recettesFavories
     }
     
-    private func addImageRecette(imageRecette: UIImage) {
+    private func addImageRecette(imageRecette: Data?) {
         let image = ImagesFavories(context: AppDelegate.viewContext)
         
-        guard ((imageRecette.pngData()) != nil) else {
+        guard (UIImage(data: imageRecette!) != nil) else {
             image.image = UIImage(named: "food.png")!.pngData() // Cast the image of recette in data
             return self.imagesFavories = image
         }
-        image.image = imageRecette.pngData() // Cast the image of recette in data
+        image.image = imageRecette! // Cast the image of recette in data
         self.imagesFavories = image // // Add RecetteFavorie to Favorie.imagesFavories
     }
     
