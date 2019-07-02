@@ -20,11 +20,11 @@ class AddIngredientsController: UIViewController {
         self.setNavigationBar() // Set color and fond text
         
         NotificationCenter.default.addObserver(self, selector: #selector(displayError), name: .error, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(dataReceived), name: .dataRecette, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(dataReceived), name: .dataRecipe, object: nil)
     }
     
     @objc func dataReceived() { // Go into next controller when notification data is received
-        performSegue(withIdentifier: "segueToListRecettes", sender: self)
+        performSegue(withIdentifier: "segueToListRecipes", sender: self)
     }
     
     @IBAction func addIngredient(_ sender: Any) { // Add new ingredient and reload the tableView
@@ -42,12 +42,12 @@ class AddIngredientsController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // Prepare variables for the changement of controller
-        if segue.identifier == "segueToListRecettes" {
-            let successVC = segue.destination as! ListRecettesController
-            guard let tmpListRecette = ingredients.dataRecette else {
-                return successVC.listRecette = Recettes(recettes: CurrentRecettes(hits: []), images: [])
+        if segue.identifier == "segueToListRecipes" {
+            let successVC = segue.destination as! ListRecipesController
+            guard let tmpListRecipe = ingredients.dataRecipe else {
+                return successVC.listRecipe = Recipes(recipes: CurrentRecipe(hits: []), images: [])
             }
-            successVC.listRecette = tmpListRecette
+            successVC.listRecipe = tmpListRecipe
         }
     }
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {

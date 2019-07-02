@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Favorie" representedClassName=".Favorie" syncable="YES" codeGenerationType="category">
-        <relationship name="imagesFavories" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ImagesFavories" inverseName="favorie" inverseEntity="ImagesFavories" syncable="YES"/>
-        <relationship name="recettesFavories" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="RecettesFavories" inverseName="favorie" inverseEntity="RecettesFavories" syncable="YES"/>
+    <entity name="Favorite" representedClassName=".Favorite" syncable="YES" codeGenerationType="category">
+        <relationship name="imagesFavorites" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ImagesFavorites" inverseName="favorite" inverseEntity="ImagesFavorites" syncable="YES"/>
+        <relationship name="recipesFavorites" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="RecipesFavorites" inverseName="favorite" inverseEntity="RecipesFavorites" syncable="YES"/>
     </entity>
-    <entity name="ImagesFavories" representedClassName=".ImagesFavories" syncable="YES" codeGenerationType="class">
+    <entity name="ImagesFavorites" representedClassName=".ImagesFavorites" syncable="YES" codeGenerationType="class">
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
-        <relationship name="favorie" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Favorie" inverseName="imagesFavories" inverseEntity="Favorie" syncable="YES"/>
+        <relationship name="favorite" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Favorite" inverseName="imagesFavorites" inverseEntity="Favorite" syncable="YES"/>
     </entity>
-    <entity name="RecettesFavories" representedClassName=".RecettesFavories" syncable="YES" codeGenerationType="class">
+    <entity name="RecipesFavorites" representedClassName=".RecipesFavorites" syncable="YES" codeGenerationType="class">
         <attribute name="calories" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="listIngredients" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="totalTime" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="yield" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="favorie" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Favorie" inverseName="recettesFavories" inverseEntity="Favorie" syncable="YES"/>
+        <relationship name="favorite" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Favorite" inverseName="recipesFavorites" inverseEntity="Favorite" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Favorie" positionX="-270.51953125" positionY="-79.578125" width="128" height="73"/>
-        <element name="RecettesFavories" positionX="-73.0078125" positionY="67.5" width="128" height="133"/>
-        <element name="ImagesFavories" positionX="-489.08203125" positionY="66.4921875" width="128" height="73"/>
+        <element name="Favorite" positionX="-270.51953125" positionY="-79.578125" width="128" height="73"/>
+        <element name="ImagesFavorites" positionX="-489.08203125" positionY="66.4921875" width="128" height="73"/>
+        <element name="RecipesFavorites" positionX="-73.0078125" positionY="67.5" width="128" height="133"/>
     </elements>
 </model>

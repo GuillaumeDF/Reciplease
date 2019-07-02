@@ -54,24 +54,24 @@ class AddIngredientTest: XCTestCase {
     
     func testGetReponseJsonWhenJsonIsCorrectThenResultShoultBeOK() {
         ingredient.getResponseJSON(data: AddIngredientTest.correctData)
-        XCTAssertEqual((ingredient.dataRecette?.recettes.hits.first?.recipe.label)!, AddIngredientTest.hitsOK.recipe.label)
-        XCTAssertEqual((ingredient.dataRecette?.recettes.hits.first?.recipe.image)!, AddIngredientTest.hitsOK.recipe.image)
-        XCTAssertEqual((ingredient.dataRecette?.recettes.hits.first?.recipe.ingredientLines)!, AddIngredientTest.hitsOK.recipe.ingredientLines)
-        XCTAssertEqual((ingredient.dataRecette?.recettes.hits.first?.recipe.calories)!, AddIngredientTest.hitsOK.recipe.calories)
-        XCTAssertEqual((ingredient.dataRecette?.recettes.hits.first?.recipe.totalTime)!, AddIngredientTest.hitsOK.recipe.totalTime)
-        XCTAssertEqual((ingredient.dataRecette?.recettes.hits.first?.recipe.yield)!, AddIngredientTest.hitsOK.recipe.yield)
-        XCTAssertEqual((ingredient.dataRecette?.images.first?.pngData())!, UIImage(data: try Data(contentsOf: URL(string: AddIngredientTest.hitsOK.recipe.image)!))?.pngData())
+        XCTAssertEqual((ingredient.dataRecipe?.recipes.hits.first?.recipe.label)!, AddIngredientTest.hitsOK.recipe.label)
+        XCTAssertEqual((ingredient.dataRecipe?.recipes.hits.first?.recipe.image)!, AddIngredientTest.hitsOK.recipe.image)
+        XCTAssertEqual((ingredient.dataRecipe?.recipes.hits.first?.recipe.ingredientLines)!, AddIngredientTest.hitsOK.recipe.ingredientLines)
+        XCTAssertEqual((ingredient.dataRecipe?.recipes.hits.first?.recipe.calories)!, AddIngredientTest.hitsOK.recipe.calories)
+        XCTAssertEqual((ingredient.dataRecipe?.recipes.hits.first?.recipe.totalTime)!, AddIngredientTest.hitsOK.recipe.totalTime)
+        XCTAssertEqual((ingredient.dataRecipe?.recipes.hits.first?.recipe.yield)!, AddIngredientTest.hitsOK.recipe.yield)
+        XCTAssertEqual((ingredient.dataRecipe?.images.first?.pngData())!, UIImage(data: try Data(contentsOf: URL(string: AddIngredientTest.hitsOK.recipe.image)!))?.pngData())
     }
     
     func testGetReponseJsonWhenJsonIsNotCorrectThenResultShoultBeKO() {
         ingredient.getResponseJSON(data: AddIngredientTest.incorrectData)
-        XCTAssertEqual((ingredient.dataRecette?.recettes.hits.first?.recipe.label)!, AddIngredientTest.hitsKO.recipe.label)
-        XCTAssertEqual((ingredient.dataRecette?.recettes.hits.first?.recipe.image)!, "")
-        XCTAssertEqual((ingredient.dataRecette?.recettes.hits.first?.recipe.ingredientLines)!, AddIngredientTest.hitsKO.recipe.ingredientLines)
-        XCTAssertEqual((ingredient.dataRecette?.recettes.hits.first?.recipe.calories)!, AddIngredientTest.hitsKO.recipe.calories)
-        XCTAssertEqual((ingredient.dataRecette?.recettes.hits.first?.recipe.totalTime)!, AddIngredientTest.hitsKO.recipe.totalTime)
-        XCTAssertEqual((ingredient.dataRecette?.recettes.hits.first?.recipe.yield)!, AddIngredientTest.hitsKO.recipe.yield)
-        XCTAssertEqual((ingredient.dataRecette?.images.first?.pngData())!, UIImage(named: "food.png")?.pngData())
+        XCTAssertEqual((ingredient.dataRecipe?.recipes.hits.first?.recipe.label)!, AddIngredientTest.hitsKO.recipe.label)
+        XCTAssertEqual((ingredient.dataRecipe?.recipes.hits.first?.recipe.image)!, "")
+        XCTAssertEqual((ingredient.dataRecipe?.recipes.hits.first?.recipe.ingredientLines)!, AddIngredientTest.hitsKO.recipe.ingredientLines)
+        XCTAssertEqual((ingredient.dataRecipe?.recipes.hits.first?.recipe.calories)!, AddIngredientTest.hitsKO.recipe.calories)
+        XCTAssertEqual((ingredient.dataRecipe?.recipes.hits.first?.recipe.totalTime)!, AddIngredientTest.hitsKO.recipe.totalTime)
+        XCTAssertEqual((ingredient.dataRecipe?.recipes.hits.first?.recipe.yield)!, AddIngredientTest.hitsKO.recipe.yield)
+        XCTAssertEqual((ingredient.dataRecipe?.images.first?.pngData())!, UIImage(named: "food.png")?.pngData())
     }
     
     func testGetReponseJsonWhenJsonIsNulThenResultShoultBeKO() {

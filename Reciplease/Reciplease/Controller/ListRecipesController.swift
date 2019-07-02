@@ -1,5 +1,5 @@
 //
-//  ListRecettesController.swift
+//  ListRecipesController.swift
 //  Reciplease
 //
 //  Created by Guillaume Djaider Fornari on 11/06/2019.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ListRecettesController: UIViewController {
+class ListRecipesController: UIViewController {
 
     @IBOutlet weak var resetButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
-    var listRecette: Recettes!
+    var listRecipe: Recipes!
     // Variable send  to RecetteController for show in detail the recette
-    var recettePicked: Hits!
+    var recipePicked: Hits!
     var imagePicked: UIImage!
     
     @IBOutlet weak var recettesTableView: UITableView!
@@ -23,45 +23,45 @@ class ListRecettesController: UIViewController {
         super.viewDidLoad()
         self.setNavigationBar() // Set color and fond text
         self.setResetButton() // Set reset Button hidden / not hidden
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadFavoriesListRecettes), name: .reloadFavoriesListRecettes, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadFavoritesListRecipes), name: .reloadFavoritesListRecipes, object: nil)
         if isFavorie {
-            self.listRecette = AppDelegate.delegate.favorie  // If controller is Favorie then recette = ReccetteFavorie
+            self.listRecipe = AppDelegate.delegate.favorite  // If controller is Favorie then recette = ReccetteFavorie
         }
     }
     
-    @objc func reloadFavoriesListRecettes() { // Reload listFavorieRecette
+    @objc func reloadFavoritesListRecipes() { // Reload listFavorieRecette
         if isFavorie { // If controller is Favorie then recette = ReccetteFavorie
-            self.listRecette = AppDelegate.delegate.favorie
+            self.listRecipe = AppDelegate.delegate.favorite
             tableView.reloadData()
         }
     }
     
     @IBAction func resetFavorie(_ sender: Any) { // Reset all favorie
-        Favorie.resetFavorie()
+        Favorite.resetFavorite()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // Prepare variables for the changement of controller
-        if segue.identifier == "segueToRecette" {
-            let successVC = segue.destination as! RecetteController
-            successVC.dataRecette = self.recettePicked
+        if segue.identifier == "segueToRecipe" {
+            let successVC = segue.destination as! RecipeController
+            successVC.dataRecette = self.recipePicked
             successVC.imageRecette = self.imagePicked
         }
     }
 }
 
-extension ListRecettesController: UITableViewDataSource, UITableViewDelegate {
+extension ListRecipesController: UITableViewDataSource, UITableViewDelegate {
     
     // Return the number of cell in TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listRecette.recettes.hits.count
+        return listRecipe.recipes.hits.count
     }
     
     // Return cell with data
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: RecetteViewCell = tableView.dequeueReusableCell(withIdentifier: "RecetteCell") as! RecetteViewCell
-        let data = listRecette.recettes.hits[indexPath.row]
-        let image = listRecette.images[indexPath.row]
-        cell.setRecetteCell(recette: data, image: image)
+        let cell: RecipeViewCell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell") as! RecipeViewCell
+        let data = listRecipe.recipes.hits[indexPath.row]
+        let image = listRecipe.images[indexPath.row]
+        cell.setRecipeCell(recipe: data, image: image)
         return cell
     }
     
@@ -72,9 +72,9 @@ extension ListRecettesController: UITableViewDataSource, UITableViewDelegate {
     
     // Get index of cell selected
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.recettePicked = listRecette.recettes.hits[indexPath.row]
-        self.imagePicked = listRecette.images[indexPath.row]
-        performSegue(withIdentifier: "segueToRecette", sender: self)
+        self.recipePicked = listRecipe.recipes.hits[indexPath.row]
+        self.imagePicked = listRecipe.images[indexPath.row]
+        performSegue(withIdentifier: "segueToRecipe", sender: self)
     }
     
     // Delete cell
@@ -83,12 +83,12 @@ extension ListRecettesController: UITableViewDataSource, UITableViewDelegate {
             return
         }
         if editingStyle == .delete {
-            Favorie.deleteElement(row: indexPath.row)
+            Favorite.deleteElement(row: indexPath.row)
         }
     }
 }
 
-extension ListRecettesController {
+extension ListRecipesController {
     
     func setResetButton() { // Set the button reset
         if isFavorie {

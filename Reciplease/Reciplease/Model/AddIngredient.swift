@@ -28,13 +28,13 @@ struct Hits: Codable {
 }
 
 // Struct used by JSONDecoder() for decode Data
-struct CurrentRecettes: Codable {
+struct CurrentRecipe: Codable {
     var hits: [Hits]
 }
 
 // Container used to transfer data between Controller
-struct Recettes {
-    var recettes: CurrentRecettes
+struct Recipes {
+    var recipes: CurrentRecipe
     var images: [UIImage]
 }
 
@@ -47,7 +47,7 @@ class AddIngredient {
                 "app_id": idApi!,
                 "app_key": keyApi!]
         }
-    var dataRecette: Recettes?
+    var dataRecipe: Recipes?
     
     func addIngredient(ingredient: String) { // New ingredient in the list
         if (self.arrayIngredients.contains(ingredient)) {
@@ -88,19 +88,19 @@ class AddIngredient {
     
     func getResponseJSON(data: Data?) {
         do {
-            // Decode with the struct CurrentRecettes
-            let dataJSON = try JSONDecoder().decode(CurrentRecettes.self, from: data ?? "".data(using: .utf8)!)
-            self.dataRecette = Recettes(recettes: dataJSON, images: self.getImages(recettes: dataJSON))
-            NotificationCenter.default.post(name:.dataRecette, object: nil) // Send a notification for inform than the data is ready to display
+            // Decode with the struct CurrentRecipe
+            let dataJSON = try JSONDecoder().decode(CurrentRecipe.self, from: data ?? "".data(using: .utf8)!)
+            self.dataRecipe = Recipes(recipes: dataJSON, images: self.getImages(recipes: dataJSON))
+            NotificationCenter.default.post(name:.dataRecipe, object: nil) // Send a notification to inform than the data is ready to display
         } catch {
             NotificationCenter.default.post(name: .error,object: ["Error Decoder", "Can't decode data in JSON"])
         }
     }
     
-    private func getImages(recettes: CurrentRecettes) -> [UIImage] { // Download all images of recettes and stock in array
+    private func getImages(recipes: CurrentRecipe) -> [UIImage] { // Download all images of recipes and stock in array
         var images: [UIImage] = []
         
-        for urlImage in recettes.hits {
+        for urlImage in recipes.hits {
             if URL(string: urlImage.recipe.image) != nil {
                 images.append(UIImage(data: try! Data(contentsOf: URL(string: urlImage.recipe.image)!))!)
             }

@@ -200,7 +200,7 @@
                     <connections>
                         <outlet property="ingredientTableView" destination="obY-Lo-3ck" id="la6-e5-hRp"/>
                         <outlet property="ingredientText" destination="zNz-qO-0oK" id="kQa-ah-oiF"/>
-                        <segue destination="HTH-Wt-fWU" kind="show" identifier="segueToListRecettes" id="POl-0V-dvB"/>
+                        <segue destination="HTH-Wt-fWU" kind="show" identifier="segueToListRecipes" id="POl-0V-dvB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UvF-Z7-4gq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -215,7 +215,7 @@
         <!--Reciplease-->
         <scene sceneID="0Le-dc-sv6">
             <objects>
-                <viewController id="HTH-Wt-fWU" customClass="ListRecettesController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HTH-Wt-fWU" customClass="ListRecipesController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZCV-gG-ClB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -224,7 +224,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" red="0.21167728299999999" green="0.20006069539999999" blue="0.19607782360000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RecetteCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecetteCell" rowHeight="150" id="2Wo-AB-vY5" customClass="RecetteViewCell" customModule="Reciplease" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RecetteCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecipeCell" rowHeight="150" id="2Wo-AB-vY5" customClass="RecipeViewCell" customModule="Reciplease" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Wo-AB-vY5" id="8dm-2x-7OW">
@@ -324,12 +324,12 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="imageRecette" destination="Cjj-ph-0UC" id="sfh-hX-TAO"/>
-                                            <outlet property="ingredientsRecette" destination="Ssh-0f-tdT" id="Hap-NF-cau"/>
-                                            <outlet property="timeRecette" destination="ts4-9K-RYE" id="inh-GY-Psp"/>
-                                            <outlet property="titleRecette" destination="REB-Hq-SzL" id="EI9-KU-jxg"/>
+                                            <outlet property="imageRecipe" destination="Cjj-ph-0UC" id="0ST-N7-rf7"/>
+                                            <outlet property="ingredientsRecipe" destination="Ssh-0f-tdT" id="Cid-Qa-2HY"/>
+                                            <outlet property="timeRecipe" destination="ts4-9K-RYE" id="MLp-jd-XMg"/>
+                                            <outlet property="titleRecipe" destination="REB-Hq-SzL" id="3Bq-MS-iCp"/>
                                             <outlet property="viewIndications" destination="WdP-FN-R2U" id="ZlF-Mw-3Dc"/>
-                                            <outlet property="yieldRecette" destination="xL4-zJ-az3" id="T2n-Le-yQw"/>
+                                            <outlet property="yieldRecipe" destination="xL4-zJ-az3" id="hBY-sZ-dUD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -360,7 +360,7 @@
                         <outlet property="recettesTableView" destination="v66-jM-6Ab" id="wCW-Ig-IUK"/>
                         <outlet property="resetButton" destination="W4m-bt-vlf" id="ZXv-uL-qC3"/>
                         <outlet property="tableView" destination="v66-jM-6Ab" id="tJN-Tf-S4u"/>
-                        <segue destination="umW-Te-kfE" kind="show" identifier="segueToRecette" id="nPk-tc-zc1"/>
+                        <segue destination="umW-Te-kfE" kind="show" identifier="segueToRecipe" id="nPk-tc-zc1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Leo-vh-3RM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -370,8 +370,8 @@
         <!--Reciplease-->
         <scene sceneID="bvd-Xg-o7a">
             <objects>
-                <viewController id="umW-Te-kfE" customClass="RecetteController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="SHV-KE-UUO" customClass="RecetteDetailsView" customModule="Reciplease" customModuleProvider="target">
+                <viewController id="umW-Te-kfE" customClass="RecipeController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SHV-KE-UUO" customClass="RecipeDetailsView" customModule="Reciplease" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -486,7 +486,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="displayIngredientLabel" destination="I5O-56-FDJ" id="OKO-i6-3OD"/>
+                                            <outlet property="displayIngredientLabel" destination="I5O-56-FDJ" id="ZuJ-Tf-vlV"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -520,12 +520,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Ei-4E-1B8"/>
                         <connections>
-                            <outlet property="caloriesRecette" destination="Nfg-N1-tk2" id="2cQ-gX-eyu"/>
-                            <outlet property="imageRecette" destination="XZA-8V-pHP" id="Rgu-BE-Q4E"/>
-                            <outlet property="timeRecette" destination="M7P-Ei-25U" id="lV9-6C-mm6"/>
-                            <outlet property="titleRecette" destination="AMv-Ci-AKW" id="Nwd-Sz-fmn"/>
+                            <outlet property="calorieRecipe" destination="Nfg-N1-tk2" id="fUH-sJ-ahW"/>
+                            <outlet property="imageRecipe" destination="XZA-8V-pHP" id="SYw-p4-ewP"/>
+                            <outlet property="timeRecipe" destination="M7P-Ei-25U" id="Mmp-fr-oBr"/>
+                            <outlet property="titleRecipe" destination="AMv-Ci-AKW" id="zY8-pS-XzU"/>
                             <outlet property="viewIndication" destination="BOy-Se-RBo" id="oSk-QT-L4r"/>
-                            <outlet property="yieldRecette" destination="hcO-x9-VSd" id="xjM-PX-FVY"/>
+                            <outlet property="yieldRecipe" destination="hcO-x9-VSd" id="Z1f-GJ-BY3"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Reciplease" id="VFj-zc-YQR">
@@ -537,7 +537,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="Dsn-VU-4qb" id="NV6-tL-pt4"/>
-                        <outlet property="detailRecetteView" destination="SHV-KE-UUO" id="fdD-dD-T7G"/>
+                        <outlet property="detailRecipeView" destination="SHV-KE-UUO" id="qu4-2x-f3d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cae-FB-7Ms" userLabel="First Responder" sceneMemberID="firstResponder"/>

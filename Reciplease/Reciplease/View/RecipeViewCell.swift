@@ -1,5 +1,5 @@
 //
-//  RecetteViewCell.swift
+//  RecipeViewCell.swift
 //  Reciplease
 //
 //  Created by Guillaume Djaider Fornari on 11/06/2019.
@@ -9,13 +9,13 @@
 import UIKit
 import Alamofire
 
-class RecetteViewCell: UITableViewCell {
+class RecipeViewCell: UITableViewCell {
 
-    @IBOutlet weak var imageRecette: UIImageView!
-    @IBOutlet weak var titleRecette: UILabel!
-    @IBOutlet weak var ingredientsRecette: UILabel!
-    @IBOutlet weak var yieldRecette: UILabel!
-    @IBOutlet weak var timeRecette: UILabel!
+    @IBOutlet weak var imageRecipe: UIImageView!
+    @IBOutlet weak var titleRecipe: UILabel!
+    @IBOutlet weak var ingredientsRecipe: UILabel!
+    @IBOutlet weak var yieldRecipe: UILabel!
+    @IBOutlet weak var timeRecipe: UILabel!
     @IBOutlet weak var viewIndications: UIView! {
         didSet { // Add corner and border White
             viewIndications.layer.cornerRadius = 5
@@ -33,12 +33,12 @@ class RecetteViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setRecetteCell(recette: Hits, image: UIImage) {
-        self.imageRecette.image = image
-        self.titleRecette.text = recette.recipe.label
-        self.ingredientsRecette.text = recette.recipe.ingredientLines.joined(separator: ", ")
-        self.timeRecette.text = String(recette.recipe.totalTime) + "m"
-        self.yieldRecette.text = String(recette.recipe.yield)
+    func setRecipeCell(recipe: Hits, image: UIImage) {
+        self.imageRecipe.image = image
+        self.titleRecipe.text = recipe.recipe.label
+        self.ingredientsRecipe.text = recipe.recipe.ingredientLines.joined(separator: ", ")
+        self.timeRecipe.text = String(recipe.recipe.totalTime) + "m"
+        self.yieldRecipe.text = String(recipe.recipe.yield)
         self.layer.cornerRadius = 10
     }
 }

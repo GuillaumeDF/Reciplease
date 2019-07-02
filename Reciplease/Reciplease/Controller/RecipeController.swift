@@ -1,5 +1,5 @@
 //
-//  RecetteController.swift
+//  RecipeController.swift
 //  Reciplease
 //
 //  Created by Guillaume Djaider Fornari on 12/06/2019.
@@ -8,26 +8,27 @@
 
 import UIKit
 
-class RecetteController: UIViewController {
+class RecipeController: UIViewController {
 
     var imageRecette: UIImage!
     var dataRecette: Hits!
-    @IBOutlet var detailRecetteView: RecetteDetailsView!
+    @IBOutlet var detailRecipeView: RecipeDetailsView!
+    //@IBOutlet var detailRecetteView: RecipeDetailsView!
     @IBOutlet weak var addButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setAddButton()
-        self.detailRecetteView.setDetailRecette(data: dataRecette, image: imageRecette) // Set the detail of the recette
+        self.detailRecipeView.setDetailRecette(data: dataRecette, image: imageRecette) // Set the detail of the recette
     }
     
     @IBAction func saveRecette(_ sender: Any) { // Save recette
-        let favorie = Favorie(context: AppDelegate.viewContext) // Creata a new context of Favorie
+        let favorie = Favorite(context: AppDelegate.viewContext) // Creata a new context of Favorie
         favorie.addElement(dataRecette: dataRecette, imageRecette: imageRecette.pngData()) // Add a new element to Favore
     }
 }
 
-extension RecetteController: UITableViewDataSource, UITableViewDelegate {
+extension RecipeController: UITableViewDataSource, UITableViewDelegate {
     
     // Return the number of cell in TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,7 +49,7 @@ extension RecetteController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension RecetteController {
+extension RecipeController {
     
     func setAddButton() {
         if isFavorie { // Check if navigationController.title == Favorie

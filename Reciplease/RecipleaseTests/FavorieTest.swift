@@ -10,7 +10,7 @@ import XCTest
 @testable import Reciplease
 import UIKit
 
-class FavorieTest: XCTestCase {
+class FavoriteTest: XCTestCase {
     
     static var hitsOK: Hits {
         return Hits(recipe: Recipe(label: "Tarte à la tomate", image: "food.png", ingredientLines: ["Lemon,", "Cheese", "Pasta"], calories: 1234.0, totalTime: 12, yield: 3))
@@ -21,30 +21,30 @@ class FavorieTest: XCTestCase {
     }
     
     func testGetAddRecetteToFavorieWhenDataIsCorrectThenAddingShouldBeOK() {
-        let favorie = Favorie(context: AppDelegate.viewContext)
-        favorie.addElement(dataRecette: FavorieTest.hitsOK, imageRecette: UIImage(named: "food.png")?.pngData())
-        XCTAssertEqual(favorie.recettesFavories?.label, "Tarte à la tomate")
-        XCTAssertEqual(favorie.imagesFavories?.image, UIImage(named: "food.png")?.pngData())
+        let favorie = Favorite(context: AppDelegate.viewContext)
+        favorie.addElement(dataRecette: FavoriteTest.hitsOK, imageRecette: UIImage(named: "food.png")?.pngData())
+        XCTAssertEqual(favorie.recipesFavorites?.label, "Tarte à la tomate")
+        XCTAssertEqual(favorie.imagesFavorites?.image, UIImage(named: "food.png")?.pngData())
     }
     
     func testGetAddRecetteToFavorieWhenDataIsNotCorrectThenAddingShouldBeOK() {
-        let favorie = Favorie(context: AppDelegate.viewContext)
-        favorie.addElement(dataRecette: FavorieTest.hitsKO, imageRecette: "".data(using: .utf8))
-        XCTAssertEqual(favorie.recettesFavories?.label, "")
-        XCTAssertEqual(favorie.imagesFavories?.image, UIImage(named: "food.png")?.pngData())
+        let favorie = Favorite(context: AppDelegate.viewContext)
+        favorie.addElement(dataRecette: FavoriteTest.hitsKO, imageRecette: "".data(using: .utf8))
+        XCTAssertEqual(favorie.recipesFavorites?.label, "")
+        XCTAssertEqual(favorie.imagesFavorites?.image, UIImage(named: "food.png")?.pngData())
     }
     
     func testResetAllFavoriesThenTheCountingShouldBeZero() {
-        Favorie.resetFavorie()
-        XCTAssertEqual(Favorie.favorie.count, 0)
+        Favorite.resetFavorite()
+        XCTAssertEqual(Favorite.favorite.count, 0)
     }
     
     func testRestorAllFavoriesWhenFavorieIsCorrectThenTheResultShouldBeOK() {
         self.testResetAllFavoriesThenTheCountingShouldBeZero()
         self.testGetAddRecetteToFavorieWhenDataIsCorrectThenAddingShouldBeOK()
         self.testGetAddRecetteToFavorieWhenDataIsCorrectThenAddingShouldBeOK()
-        let recettes = Favorie.restorAllFavories()
-        XCTAssertEqual(recettes.recettes.hits.count, 2)
+        let recettes = Favorite.restorAllFavorites()
+        XCTAssertEqual(recettes.recipes.hits.count, 2)
         XCTAssertEqual(recettes.images.count, 2)
     }
     
@@ -52,9 +52,9 @@ class FavorieTest: XCTestCase {
         self.testResetAllFavoriesThenTheCountingShouldBeZero()
         self.testGetAddRecetteToFavorieWhenDataIsNotCorrectThenAddingShouldBeOK()
         self.testGetAddRecetteToFavorieWhenDataIsNotCorrectThenAddingShouldBeOK()
-        Favorie.favorie.first!.imagesFavories?.image = "".data(using: .utf8)
-        let recettes = Favorie.restorAllFavories()
-        XCTAssertEqual(recettes.recettes.hits.count, 2)
+        Favorite.favorite.first!.imagesFavorites?.image = "".data(using: .utf8)
+        let recettes = Favorite.restorAllFavorites()
+        XCTAssertEqual(recettes.recipes.hits.count, 2)
         XCTAssertEqual(recettes.images.count, 2)
     }
     
@@ -62,22 +62,22 @@ class FavorieTest: XCTestCase {
         self.testResetAllFavoriesThenTheCountingShouldBeZero()
         self.testGetAddRecetteToFavorieWhenDataIsCorrectThenAddingShouldBeOK()
         self.testGetAddRecetteToFavorieWhenDataIsCorrectThenAddingShouldBeOK()
-        Favorie.deleteElement(row: 10)
-        XCTAssertEqual(Favorie.favorie.count, 2)
-        XCTAssertEqual(Favorie.favorie.count, 2)
+        Favorite.deleteElement(row: 10)
+        XCTAssertEqual(Favorite.favorite.count, 2)
+        XCTAssertEqual(Favorite.favorite.count, 2)
     }
     
     func testDeleteElementWhenIndexIsCorrectThenDeletingShouldBeOk() {
         self.testResetAllFavoriesThenTheCountingShouldBeZero()
         self.testGetAddRecetteToFavorieWhenDataIsCorrectThenAddingShouldBeOK()
         self.testGetAddRecetteToFavorieWhenDataIsCorrectThenAddingShouldBeOK()
-        Favorie.deleteElement(row: 1)
-        XCTAssertEqual(Favorie.favorie.count, 1)
-        XCTAssertEqual(Favorie.favorie.count, 1)
+        Favorite.deleteElement(row: 1)
+        XCTAssertEqual(Favorite.favorite.count, 1)
+        XCTAssertEqual(Favorite.favorite.count, 1)
     }
     
     func testFindFavorieWhenFavorieIsEmptyThenResultShouldBeKO() {
         self.testResetAllFavoriesThenTheCountingShouldBeZero()
-        XCTAssertEqual(Favorie.favorie, [])
+        XCTAssertEqual(Favorite.favorite, [])
     }
 }

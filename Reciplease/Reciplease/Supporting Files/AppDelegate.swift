@@ -13,8 +13,8 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var favorie: Recettes! {
-        return Favorie.restorAllFavories()
+    var favorite: Recipes! {
+        return Favorite.restorAllFavorites()
     }
     static let delegate = UIApplication.shared.delegate as! AppDelegate
 
