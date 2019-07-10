@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Alamofire
+//import Alamofire
 
 class RecipeViewCell: UITableViewCell {
 
@@ -33,8 +33,8 @@ class RecipeViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setRecipeCell(recipe: Hits, image: UIImage) {
-        self.imageRecipe.image = image
+    func setRecipeCell(recipe: Hits, image: Data) {
+        self.imageRecipe.image = UIImage(data: image)
         self.titleRecipe.text = recipe.recipe.label
         self.ingredientsRecipe.text = recipe.recipe.ingredientLines.joined(separator: ", ")
         self.timeRecipe.text = String(recipe.recipe.totalTime) + "m"

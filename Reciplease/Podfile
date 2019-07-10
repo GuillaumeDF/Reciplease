@@ -1,5 +1,12 @@
 platform :ios, '12.2'
+use_frameworks!
+inhibit_all_warnings!
+
 target 'Reciplease' do
-    use_frameworks!
+  pod 'Alamofire'
+  
+  target 'RecipleaseTests' do
+    inherit! :search_paths
     pod 'Alamofire'
+  end
 end

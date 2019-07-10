@@ -24,7 +24,9 @@ class AddIngredientsController: UIViewController {
     }
     
     @objc func dataReceived() { // Go into next controller when notification data is received
-        performSegue(withIdentifier: "segueToListRecipes", sender: self)
+        if ((ingredients.dataRecipe) != nil) {
+            performSegue(withIdentifier: "segueToListRecipes", sender: self)
+        }
     }
     
     @IBAction func addIngredient(_ sender: Any) { // Add new ingredient and reload the tableView
@@ -43,11 +45,11 @@ class AddIngredientsController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // Prepare variables for the changement of controller
         if segue.identifier == "segueToListRecipes" {
-            let successVC = segue.destination as! ListRecipesController
+            let successVC = segue.destination as? ListRecipesController
             guard let tmpListRecipe = ingredients.dataRecipe else {
-                return successVC.listRecipe = Recipes(recipes: CurrentRecipe(hits: []), images: [])
+                return
             }
-            successVC.listRecipe = tmpListRecipe
+            successVC?.listRecipe = tmpListRecipe
         }
     }
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
@@ -64,7 +66,9 @@ extension AddIngredientsController: UITableViewDataSource, UITableViewDelegate {
     
     // Return cell with data
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: IngredientsViewCell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell") as! IngredientsViewCell
+        guard let cell: IngredientsViewCell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell") as? IngredientsViewCell else {
+            return UITableViewCell()
+        }
         let data = ingredients.arrayIngredients[indexPath.row]
         
        cell.newIngredient = data

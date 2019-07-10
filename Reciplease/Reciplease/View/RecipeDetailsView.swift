@@ -24,10 +24,10 @@ class RecipeDetailsView: UIView {
         }
     }
     
-    func setDetailRecette(data: Hits, image: UIImage) {
+    func setDetailRecette(data: Hits, image: Data) {
         self.yieldRecipe.text = String(data.recipe.yield)
         self.timeRecipe.text = String(data.recipe.totalTime) + "m"
-        self.imageRecipe.image = image
+        self.imageRecipe.image = UIImage(data: image)
         self.titleRecipe.text = data.recipe.label
         self.calorieRecipe.text = String(Int(data.recipe.calories)) + " calories"
     }

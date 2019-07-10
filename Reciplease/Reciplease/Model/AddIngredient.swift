@@ -9,11 +9,6 @@
 import Foundation
 import Alamofire
 
-internal let urlApi:    String! = "https://api.edamam.com/search"
-internal let idApi:     String! = "5793f67a"
-internal let keyApi:    String! = "cae818758e2fe39a683ffd2bd89ff81a"
-
-
 struct Recipe: Codable {
     let label: String
     let image: String
@@ -35,17 +30,21 @@ struct CurrentRecipe: Codable {
 // Container used to transfer data between Controller
 struct Recipes {
     var recipes: CurrentRecipe
-    var images: [UIImage]
+    var images: [Data]
 }
 
 // Class used to create request, get Data and decode Data in JSON
 class AddIngredient {
+    private let urlApi: String = "https://api.edamam.com/search"
+    private let idApi:  String = "5793f67a"
+    private let keyApi: String = "cae818758e2fe39a683ffd2bd89ff81a"
+    
     var arrayIngredients: [String] = [] // Array of ingredients add by the user
     var urlIngredient: String = ""
     var parameters: Parameters { // Struct Parameters used by Alamodire for create a requete
         return ["q": self.urlIngredient,
-                "app_id": idApi!,
-                "app_key": keyApi!]
+                "app_id": self.idApi,
+                "app_key": self.keyApi]
         }
     var dataRecipe: Recipes?
     
@@ -75,7 +74,10 @@ class AddIngredient {
     }
     
     func sendRequest() { // Send a request with Alamofire
-         Alamofire.request(urlApi, parameters: self.parameters).responseJSON { response in
+        Alamofire.SessionManager.default.session.getTasksWithCompletionHandler { (sessionDataTask, uploadData, downloadData) in
+            sessionDataTask.forEach { $0.cancel() }
+        }
+         Alamofire.request(self.urlApi, parameters: self.parameters).responseJSON { response in
             if response.error != nil { // Check if there an error with response
                 return NotificationCenter.default.post(name: .error, object: ["Error Data", "Can't recover Data from Api"])
             }
@@ -87,27 +89,41 @@ class AddIngredient {
     }
     
     func getResponseJSON(data: Data?) {
+        guard let dataJSON = data else {
+            return NotificationCenter.default.post(name: .error,object: ["Error Decoder", "Can't decode data in JSON"])
+        }
         do {
             // Decode with the struct CurrentRecipe
-            let dataJSON = try JSONDecoder().decode(CurrentRecipe.self, from: data ?? "".data(using: .utf8)!)
-            self.dataRecipe = Recipes(recipes: dataJSON, images: self.getImages(recipes: dataJSON))
+            let myData = try JSONDecoder().decode(CurrentRecipe.self, from: dataJSON)
+            self.dataRecipe = Recipes(recipes: myData, images: self.getImages(recipes: myData))
             NotificationCenter.default.post(name:.dataRecipe, object: nil) // Send a notification to inform than the data is ready to display
         } catch {
             NotificationCenter.default.post(name: .error,object: ["Error Decoder", "Can't decode data in JSON"])
         }
     }
     
-    private func getImages(recipes: CurrentRecipe) -> [UIImage] { // Download all images of recipes and stock in array
-        var images: [UIImage] = []
+    private func getImages(recipes: CurrentRecipe) -> [Data] { // Download all images of recipes and stock in array
+        var images: [Data] = []
         
         for urlImage in recipes.hits {
-            if URL(string: urlImage.recipe.image) != nil {
-                images.append(UIImage(data: try! Data(contentsOf: URL(string: urlImage.recipe.image)!))!)
+            if let url = URL(string: urlImage.recipe.image) {
+                images.append(getDataImage(url: url))
             }
             else {
-                images.append(UIImage(named: "food.png")!) // Download a default image if the recover failed
+                images.append(getDataImage(url: URL(string: "food.png")!)) // Download a default image if the recover failed
             }
         }
         return (images)
+    }
+    
+    private func getDataImage(url: URL) -> Data {
+        var data: Data
+        
+        do {
+            data = try Data(contentsOf: url)
+        } catch {
+            data = "".data(using: .utf8)!
+        }
+        return data
     }
 }

@@ -14,13 +14,16 @@ extension Notification.Name {
     static let error = Notification.Name("error")
     static let dataRecipe = Notification.Name("dataRecipe")
     static let reloadFavoritesListRecipes = Notification.Name("reloadFavoritesListRecipes")
+    static let notFavotite = Notification.Name("notFavotite")
+    static let isFavoriteAndFavorites = Notification.Name("isFavoriteAndFavorites")
+    static let isFavoriteAndNoFavorite = Notification.Name("isFavoriteAndNoFavorite")
 }
 
 extension UIViewController {
     
-    var isFavorie: Bool {
+    /*var isFavorie: Bool {
         return (navigationController?.title == "Favorie")
-    }
+    }*/
     
     func displayAlert(title: String, message: String) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)

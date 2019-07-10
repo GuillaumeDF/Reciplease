@@ -31,7 +31,7 @@ class FavoriteTest: XCTestCase {
         let favorie = Favorite(context: AppDelegate.viewContext)
         favorie.addElement(dataRecette: FavoriteTest.hitsKO, imageRecette: "".data(using: .utf8))
         XCTAssertEqual(favorie.recipesFavorites?.label, "")
-        XCTAssertEqual(favorie.imagesFavorites?.image, UIImage(named: "food.png")?.pngData())
+        XCTAssertEqual(favorie.imagesFavorites?.image, "".data(using: .utf8))
     }
     
     func testResetAllFavoriesThenTheCountingShouldBeZero() {

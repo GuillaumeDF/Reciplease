@@ -8,7 +8,6 @@
 
 import Foundation
 import CoreData
-import UIKit
 
 public class Favorite: NSManagedObject {
     
@@ -19,25 +18,25 @@ public class Favorite: NSManagedObject {
     }
     
     static func restorAllFavorites() -> Recipes { // Get all Favorite in a Struct Recipes
-        var imagesFavorites: [UIImage] = []
+        var imagesFavorites: [Data] = []
         var hits: [Hits] = []
         
         for favorite in Favorite.favorite {
             imagesFavorites.append(self.restoreImageFavorite(favorite: favorite)) // Call a function restoreImageFavorite for get all images of recipes
-            hits.append(self.reconstructStructRecette(recette: favorite.recipesFavorites!)) // Call a function reconstructSructRecette for get all recettes
+            hits.append(self.reconstructStructRecette(recette: favorite.recipesFavorites)) // Call a function reconstructSructRecette for get all recettes
         }
         return Recipes(recipes: CurrentRecipe(hits: hits), images: imagesFavorites)
     }
     
-    private static func restoreImageFavorite(favorite: Favorite) -> UIImage { // Restore all Images of recettes
-        guard let image = UIImage(data: favorite.imagesFavorites!.image!) else {
-            return UIImage(named: "food.png")! // Return a default image if the recover failed
+    private static func restoreImageFavorite(favorite: Favorite) -> Data { // Restore all Images of recettes
+        guard let image = favorite.imagesFavorites?.image else {
+            return "".data(using: .utf8)! // Return a default image if the recover failed
         }
         return image
     }
     
-    private static func reconstructStructRecette(recette: RecipesFavorites) -> Hits { // Restore all recettes in a struct Hits
-        return Hits(recipe: Recipe(label: recette.label!, image: "", ingredientLines: recette.listIngredients as! [String], calories: recette.calories, totalTime: recette.totalTime, yield: recette.yield))
+    private static func reconstructStructRecette(recette: RecipesFavorites?) -> Hits { // Restore all recettes in a struct Hits
+        return Hits(recipe: Recipe(label: recette?.label ?? "nil", image: "", ingredientLines: recette?.listIngredients as? [String] ?? [""], calories: recette?.calories ?? 0, totalTime: recette?.totalTime ?? 0, yield: recette?.yield ?? 0))
     }
     
     func addElement(dataRecette: Hits, imageRecette: Data?) {
@@ -60,11 +59,7 @@ public class Favorite: NSManagedObject {
     private func addImageRecette(imageRecette: Data?) {
         let image = ImagesFavorites(context: AppDelegate.viewContext)
         
-        guard (UIImage(data: imageRecette!) != nil) else {
-            image.image = UIImage(named: "food.png")!.pngData() // Cast the image of recette in data
-            return self.imagesFavorites = image
-        }
-        image.image = imageRecette! // Cast the image of recette in data
+        image.image = imageRecette // Cast the image of recette in data
         self.imagesFavorites = image // // Add RecetteFavorite to Favorite.imagesFavorites
     }
     

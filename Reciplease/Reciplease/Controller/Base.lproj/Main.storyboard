@@ -14,7 +14,7 @@
         <scene sceneID="sCC-pw-klJ">
             <objects>
                 <navigationController title="Favorie" id="iGn-7T-m56" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ne9-da-7QU"/>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="ne9-da-7QU"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8wH-fy-r91">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -31,7 +31,7 @@
         <scene sceneID="pAw-1p-3ih">
             <objects>
                 <navigationController title="FindRecette" id="Q6l-Jx-BUZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="WDQ-pw-YYP"/>
+                    <tabBarItem key="tabBarItem" title="Search" id="WDQ-pw-YYP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JHE-bL-c35">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -195,7 +195,7 @@
                             <outletCollection property="gestureRecognizers" destination="lQ3-5P-RPD" appends="YES" id="BfJ-pu-v64"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" id="EzM-gT-GI3"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="EzM-gT-GI3"/>
                     <navigationItem key="navigationItem" title="Reciplease" id="92z-2J-5xh"/>
                     <connections>
                         <outlet property="ingredientTableView" destination="obY-Lo-3ck" id="la6-e5-hRp"/>
@@ -220,6 +220,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7P-kk-mtm" customClass="NoFavoriteView" customModule="Reciplease" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v66-jM-6Ab">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" red="0.21167728299999999" green="0.20006069539999999" blue="0.19607782360000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -342,8 +348,12 @@
                         <color key="backgroundColor" red="0.21167728304862976" green="0.20006069540977478" blue="0.19607782363891602" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="v66-jM-6Ab" firstAttribute="trailing" secondItem="mgd-wU-inZ" secondAttribute="trailing" id="2Dt-hc-vHy"/>
+                            <constraint firstItem="A7P-kk-mtm" firstAttribute="trailing" secondItem="mgd-wU-inZ" secondAttribute="trailing" id="8CE-SE-aWf"/>
+                            <constraint firstItem="A7P-kk-mtm" firstAttribute="top" secondItem="mgd-wU-inZ" secondAttribute="top" id="GU1-Xi-zzk"/>
                             <constraint firstItem="v66-jM-6Ab" firstAttribute="leading" secondItem="mgd-wU-inZ" secondAttribute="leading" id="KkM-2B-X4D"/>
+                            <constraint firstItem="A7P-kk-mtm" firstAttribute="leading" secondItem="mgd-wU-inZ" secondAttribute="leading" id="Kme-T6-43G"/>
                             <constraint firstItem="v66-jM-6Ab" firstAttribute="bottom" secondItem="mgd-wU-inZ" secondAttribute="bottom" id="RxS-QJ-QYp"/>
+                            <constraint firstItem="mgd-wU-inZ" firstAttribute="bottom" secondItem="A7P-kk-mtm" secondAttribute="bottom" id="dnM-Xs-ZbL"/>
                             <constraint firstItem="v66-jM-6Ab" firstAttribute="top" secondItem="mgd-wU-inZ" secondAttribute="top" id="zHO-o8-h6S"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mgd-wU-inZ"/>
@@ -357,6 +367,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="noFavorite" destination="A7P-kk-mtm" id="sdz-aK-a1t"/>
                         <outlet property="recettesTableView" destination="v66-jM-6Ab" id="wCW-Ig-IUK"/>
                         <outlet property="resetButton" destination="W4m-bt-vlf" id="ZXv-uL-qC3"/>
                         <outlet property="tableView" destination="v66-jM-6Ab" id="tJN-Tf-S4u"/>
@@ -529,15 +540,15 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Reciplease" id="VFj-zc-YQR">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Dsn-VU-4qb">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="kqu-TJ-hQ7">
                             <connections>
-                                <action selector="saveRecette:" destination="umW-Te-kfE" id="3ds-Cb-ZB6"/>
+                                <action selector="saveRecette:" destination="umW-Te-kfE" id="0db-TP-rYF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addButton" destination="Dsn-VU-4qb" id="NV6-tL-pt4"/>
                         <outlet property="detailRecipeView" destination="SHV-KE-UUO" id="qu4-2x-f3d"/>
+                        <outlet property="saveRecette" destination="kqu-TJ-hQ7" id="Vo8-fh-XUy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cae-FB-7Ms" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -569,6 +580,6 @@
         <image name="user" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="POl-0V-dvB"/>
+        <segue reference="fUv-1j-eC8"/>
     </inferredMetricsTieBreakers>
 </document>
