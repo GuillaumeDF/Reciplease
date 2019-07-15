@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F03CFC0522DCA87900A44632 /* FavoriteOrNotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03CFC0422DCA87900A44632 /* FavoriteOrNotTest.swift */; };
 		F04C032122B9AC6B00471F75 /* FavorieTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04C032022B9AC6B00471F75 /* FavorieTest.swift */; };
 		F065683022C274950007B1D2 /* ResultApiReciplease.json in Resources */ = {isa = PBXBuildFile; fileRef = F065682F22C274950007B1D2 /* ResultApiReciplease.json */; };
 		F065683222C274CB0007B1D2 /* AddIngredientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F065683122C274CB0007B1D2 /* AddIngredientTest.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F03CFC0422DCA87900A44632 /* FavoriteOrNotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteOrNotTest.swift; sourceTree = "<group>"; };
 		F04C032022B9AC6B00471F75 /* FavorieTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorieTest.swift; sourceTree = "<group>"; };
 		F065682F22C274950007B1D2 /* ResultApiReciplease.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ResultApiReciplease.json; sourceTree = "<group>"; };
 		F065683122C274CB0007B1D2 /* AddIngredientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientTest.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				F0A90F1B22AC0AD20089FAD4 /* Info.plist */,
+				F03CFC0422DCA87900A44632 /* FavoriteOrNotTest.swift */,
 				F065683122C274CB0007B1D2 /* AddIngredientTest.swift */,
 				F04C032022B9AC6B00471F75 /* FavorieTest.swift */,
 				F065683522C276290007B1D2 /* ResultFakeApiReciplease.json */,
@@ -302,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F065683222C274CB0007B1D2 /* AddIngredientTest.swift in Sources */,
+				F03CFC0522DCA87900A44632 /* FavoriteOrNotTest.swift in Sources */,
 				F04C032122B9AC6B00471F75 /* FavorieTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

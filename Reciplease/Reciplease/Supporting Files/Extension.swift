@@ -21,10 +21,6 @@ extension Notification.Name {
 
 extension UIViewController {
     
-    /*var isFavorie: Bool {
-        return (navigationController?.title == "Favorie")
-    }*/
-    
     func displayAlert(title: String, message: String) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))

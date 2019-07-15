@@ -11,7 +11,6 @@ import Foundation
 class FavoriteOrNot {
     
     let title: String
-    var favoriteIsSelected: Bool = false
     
     init (title: String) {
         self.title = title
