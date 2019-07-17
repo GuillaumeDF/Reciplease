@@ -35,18 +35,19 @@ struct Recipes {
 
 // Class used to create request, get Data and decode Data in JSON
 class AddIngredient {
-    private let urlApi: String = "https://api.edamam.com/search"
-    private let idApi:  String = "5793f67a"
-    private let keyApi: String = "cae818758e2fe39a683ffd2bd89ff81a"
     
+    private let edamamSession: EdamamProtocol
     var arrayIngredients: [String] = [] // Array of ingredients add by the user
     var urlIngredient: String = ""
     var parameters: Parameters { // Struct Parameters used by Alamodire for create a requete
         return ["q": self.urlIngredient,
-                "app_id": self.idApi,
-                "app_key": self.keyApi]
+                "app_id": edamamSession.idApi,
+                "app_key": edamamSession.keyApi]
         }
-    var dataRecipe: Recipes?
+    
+    init(edamamSession: EdamamProtocol = EdamamSession()) {
+        self.edamamSession = edamamSession
+    }
     
     func addIngredient(ingredient: String) { // New ingredient in the list
         if (self.arrayIngredients.contains(ingredient)) {
@@ -73,32 +74,38 @@ class AddIngredient {
         self.arrayIngredients.remove(at: index)
     }
     
-    func sendRequest() { // Send a request with Alamofire
+    func sendRequest(completionHandler: @escaping (Recipes?) -> Void) { // Send a request with Alamofire
         Alamofire.SessionManager.default.session.getTasksWithCompletionHandler { (sessionDataTask, uploadData, downloadData) in
             sessionDataTask.forEach { $0.cancel() }
         }
-         Alamofire.request(self.urlApi, parameters: self.parameters).responseJSON { response in
-            if response.error != nil { // Check if there an error with response
-                return NotificationCenter.default.post(name: .error, object: ["Error Data", "Can't recover Data from Api"])
-            }
-            if response.response?.statusCode != 200 { // Check if the response is 200
+        edamamSession.request(parameters: self.parameters) { response in
+            guard response.response?.statusCode == 200 else { // Check if the response is 200
+                completionHandler(nil)
                 return NotificationCenter.default.post(name: .error, object: ["Error Response", "Error Access from Api"])
             }
-            self.getResponseJSON(data: response.data) // Call a function to decode in JSON
+            self.getResponseJSON(data: response.data) { success, dataRecipe in
+                if success {
+                    completionHandler(dataRecipe)
+                    return
+                }
+                else {
+                    completionHandler(nil)
+                    return NotificationCenter.default.post(name: .error,object: ["Error Decoder", "Can't decode data in JSON"])
+                }
+            }
         }
     }
     
-    func getResponseJSON(data: Data?) {
+    func getResponseJSON(data: Data?, completionHandler: @escaping (Bool, Recipes?) -> Void) {
         guard let dataJSON = data else {
-            return NotificationCenter.default.post(name: .error,object: ["Error Decoder", "Can't decode data in JSON"])
+            return completionHandler(false, nil)
         }
         do {
             // Decode with the struct CurrentRecipe
             let myData = try JSONDecoder().decode(CurrentRecipe.self, from: dataJSON)
-            self.dataRecipe = Recipes(recipes: myData, images: self.getImages(recipes: myData))
-            NotificationCenter.default.post(name:.dataRecipe, object: nil) // Send a notification to inform than the data is ready to display
+            completionHandler(true, Recipes(recipes: myData, images: self.getImages(recipes: myData)))
         } catch {
-            NotificationCenter.default.post(name: .error,object: ["Error Decoder", "Can't decode data in JSON"])
+            completionHandler(false, nil)
         }
     }
     

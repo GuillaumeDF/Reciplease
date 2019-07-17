@@ -12,6 +12,7 @@ import Alamofire
 class AddIngredientsController: UIViewController {
 
     let ingredients = AddIngredient()
+    var dataRecipes: Recipes?
     @IBOutlet weak var ingredientText: UISearchBar!
     @IBOutlet weak var ingredientTableView: UITableView!
     
@@ -20,13 +21,6 @@ class AddIngredientsController: UIViewController {
         self.setNavigationBar() // Set color and fond text
         
         NotificationCenter.default.addObserver(self, selector: #selector(displayError), name: .error, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(dataReceived), name: .dataRecipe, object: nil)
-    }
-    
-    @objc func dataReceived() { // Go into next controller when notification data is received
-        if ((ingredients.dataRecipe) != nil) {
-            performSegue(withIdentifier: "segueToListRecipes", sender: self)
-        }
     }
     
     @IBAction func addIngredient(_ sender: Any) { // Add new ingredient and reload the tableView
@@ -40,16 +34,16 @@ class AddIngredientsController: UIViewController {
     }
     
     @IBAction func searchForRecipes(_ sender: Any) { // Call a function to create a request and get data
-        self.ingredients.sendRequest()
+        self.ingredients.sendRequest { dataRecipe in
+        self.dataRecipes = dataRecipe
+        self.performSegue(withIdentifier: "segueToListRecipes", sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // Prepare variables for the changement of controller
         if segue.identifier == "segueToListRecipes" {
             let successVC = segue.destination as? ListRecipesController
-            guard let tmpListRecipe = ingredients.dataRecipe else {
-                return
-            }
-            successVC?.listRecipe = tmpListRecipe
+            successVC?.listRecipe = self.dataRecipes
         }
     }
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {

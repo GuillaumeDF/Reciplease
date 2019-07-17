@@ -12,7 +12,6 @@ import UIKit
 extension Notification.Name {
     
     static let error = Notification.Name("error")
-    static let dataRecipe = Notification.Name("dataRecipe")
     static let reloadFavoritesListRecipes = Notification.Name("reloadFavoritesListRecipes")
     static let notFavotite = Notification.Name("notFavotite")
     static let isFavoriteAndFavorites = Notification.Name("isFavoriteAndFavorites")

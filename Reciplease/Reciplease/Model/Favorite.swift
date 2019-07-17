@@ -30,7 +30,7 @@ public class Favorite: NSManagedObject {
     
     private static func restoreImageFavorite(favorite: Favorite) -> Data { // Restore all Images of recettes
         guard let image = favorite.imagesFavorites?.image else {
-            return "".data(using: .utf8)! // Return a default image if the recover failed
+            return "".data(using: .utf8)!
         }
         return image
     }
